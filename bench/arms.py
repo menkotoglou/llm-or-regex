@@ -77,6 +77,15 @@ class RegexArm(Arm):
         self.pattern = re.compile(rf"\b(?:{alternation})\b", re.IGNORECASE)
         self.n_words = len(words)
 
+    def _meta(self) -> dict:
+        m = {"model": self.model, "temperature_ok": self._temperature_ok}
+        if self.provider == "anthropic":
+            m["thinking_off"] = self._thinking_off_ok
+        elif self.provider == "openai":
+            m["reasoning_off"] = self._reasoning_off_ok
+            m["token_param"] = self._token_param
+        return m
+
     def predict(self, item_id, text, label):
         t0 = time.perf_counter()
         hit = self.pattern.search(text)
@@ -99,6 +108,15 @@ class APCArm(Arm):
         self.threshold = threshold
         import importlib.metadata as md
         self.version = md.version("alt-profanity-check")
+
+    def _meta(self) -> dict:
+        m = {"model": self.model, "temperature_ok": self._temperature_ok}
+        if self.provider == "anthropic":
+            m["thinking_off"] = self._thinking_off_ok
+        elif self.provider == "openai":
+            m["reasoning_off"] = self._reasoning_off_ok
+            m["token_param"] = self._token_param
+        return m
 
     def predict(self, item_id, text, label):
         t0 = time.perf_counter()
@@ -133,6 +151,15 @@ class OwnArm(Arm):
         t0 = time.perf_counter()
         self.pipe.fit(df["text"].values, df["label"].values)
         self.fit_seconds = time.perf_counter() - t0
+
+    def _meta(self) -> dict:
+        m = {"model": self.model, "temperature_ok": self._temperature_ok}
+        if self.provider == "anthropic":
+            m["thinking_off"] = self._thinking_off_ok
+        elif self.provider == "openai":
+            m["reasoning_off"] = self._reasoning_off_ok
+            m["token_param"] = self._token_param
+        return m
 
     def predict(self, item_id, text, label):
         t0 = time.perf_counter()
@@ -179,6 +206,8 @@ class LLMArm(Arm):
         self.user_tmpl = self.user_tmpl.strip()
         self._temperature_ok = True
         self._thinking_off_ok = True   # Opus 5 / Sonnet 5 think by default: 24 output tokens is not enough
+        self._reasoning_off_ok = True  # gpt-5.x reason by default: reasoning tokens eat the same 24
+        self._token_param = "max_tokens"   # reasoning models want max_completion_tokens; remember which
         self._client = self._make_client()
 
     def _make_client(self):
@@ -211,11 +240,17 @@ class LLMArm(Arm):
                                     {"role": "user", "content": user}])
             if self._temperature_ok:
                 kwargs["temperature"] = 0
+            if self._reasoning_off_ok:
+                kwargs["reasoning_effort"] = "none"
+            kwargs[self._token_param] = 24
             try:
-                r = self._client.chat.completions.create(max_tokens=24, **kwargs)
-            except Exception as e:  # newer OpenAI models want max_completion_tokens
-                if "max_tokens" in str(e):
-                    r = self._client.chat.completions.create(max_completion_tokens=24, **kwargs)
+                r = self._client.chat.completions.create(**kwargs)
+            except Exception as e:  # newer OpenAI models want max_completion_tokens -- switch once, not per call
+                if "max_tokens" in str(e) and self._token_param == "max_tokens":
+                    self._token_param = "max_completion_tokens"
+                    kwargs.pop("max_tokens")
+                    kwargs[self._token_param] = 24
+                    r = self._client.chat.completions.create(**kwargs)
                 else:
                     raise
             out = r.choices[0].message.content or ""
@@ -226,6 +261,15 @@ class LLMArm(Arm):
         if hash(text) % 97 == 0:
             return "Sure! This comment seems fine to me.", 120, 9
         return json.dumps({"toxic": toxic}), 120 + len(text) // 4, 6
+
+    def _meta(self) -> dict:
+        m = {"model": self.model, "temperature_ok": self._temperature_ok}
+        if self.provider == "anthropic":
+            m["thinking_off"] = self._thinking_off_ok
+        elif self.provider == "openai":
+            m["reasoning_off"] = self._reasoning_off_ok
+            m["token_param"] = self._token_param
+        return m
 
     def predict(self, item_id, text, label):
         last_err, attempts = None, 0
@@ -239,8 +283,7 @@ class LLMArm(Arm):
                 pred = parse_verdict(out)
                 return Prediction(item_id, label, pred, latency_ms=ms, tokens_in=tin, tokens_out=tout,
                                   malformed=pred is None, attempts=attempts, raw=out[:500],
-                                  meta={"model": self.model, "temperature_ok": self._temperature_ok,
-                                        "thinking_off": self._thinking_off_ok})
+                                  meta=self._meta())
             except Exception as e:  # noqa: BLE001
                 msg = str(e)
                 last_err = msg
@@ -249,6 +292,9 @@ class LLMArm(Arm):
                     continue
                 if "thinking" in msg.lower() and self._thinking_off_ok:
                     self._thinking_off_ok = False   # model rejects an explicit thinking block
+                    continue
+                if "reasoning_effort" in msg.lower() and self._reasoning_off_ok:
+                    self._reasoning_off_ok = False  # non-reasoning model: no such parameter
                     continue
                 if any(k in msg.lower() for k in _RETRYABLE) and attempt < self.max_retries:
                     time.sleep(min(2 ** attempt, 30))
