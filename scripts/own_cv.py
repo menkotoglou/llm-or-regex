@@ -15,7 +15,8 @@ df = load_sample(a.sample)
 pipe = make_pipeline(make_union(TfidfVectorizer(ngram_range=(1, 2), min_df=2, sublinear_tf=True),
                                 TfidfVectorizer(analyzer="char_wb", ngram_range=(3, 5), min_df=2, sublinear_tf=True)),
                      LogisticRegression(C=4, max_iter=2000, class_weight="balanced"))
-pred = cross_val_predict(pipe, df.text.values, df.label.values,
+X, y = df.text.to_numpy(dtype=object), df.label.to_numpy(dtype=int)
+pred = cross_val_predict(pipe, X, y,
                          cv=StratifiedKFold(5, shuffle=True, random_state=20261012))
-p, r, f, _ = precision_recall_fscore_support(df.label.values, pred, average='binary')
-print(f"own (5-fold CV on {len(df)} labels): P={p:.3f} R={r:.3f} F1={f:.3f} acc={accuracy_score(df.label, pred):.3f}")
+p, r, f, _ = precision_recall_fscore_support(y, pred, average='binary')
+print(f"own (5-fold CV on {len(df)} labels): P={p:.3f} R={r:.3f} F1={f:.3f} acc={accuracy_score(y, pred):.3f}")
