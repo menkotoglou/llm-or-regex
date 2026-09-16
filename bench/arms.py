@@ -178,6 +178,7 @@ class LLMArm(Arm):
         self.system = self.system.replace("---SYSTEM---", "").strip()
         self.user_tmpl = self.user_tmpl.strip()
         self._temperature_ok = True
+        self._thinking_off_ok = True   # Opus 5 / Sonnet 5 think by default: 24 output tokens is not enough
         self._client = self._make_client()
 
     def _make_client(self):
@@ -199,6 +200,8 @@ class LLMArm(Arm):
                           messages=[{"role": "user", "content": user}])
             if self._temperature_ok:
                 kwargs["temperature"] = 0
+            if self._thinking_off_ok:
+                kwargs["thinking"] = {"type": "disabled"}
             r = self._client.messages.create(**kwargs)
             out = "".join(getattr(b, "text", "") for b in r.content)
             return out, r.usage.input_tokens, r.usage.output_tokens
@@ -236,12 +239,16 @@ class LLMArm(Arm):
                 pred = parse_verdict(out)
                 return Prediction(item_id, label, pred, latency_ms=ms, tokens_in=tin, tokens_out=tout,
                                   malformed=pred is None, attempts=attempts, raw=out[:500],
-                                  meta={"model": self.model, "temperature_ok": self._temperature_ok})
+                                  meta={"model": self.model, "temperature_ok": self._temperature_ok,
+                                        "thinking_off": self._thinking_off_ok})
             except Exception as e:  # noqa: BLE001
                 msg = str(e)
                 last_err = msg
                 if "temperature" in msg.lower() and self._temperature_ok:
                     self._temperature_ok = False   # model rejects temperature; note it in meta
+                    continue
+                if "thinking" in msg.lower() and self._thinking_off_ok:
+                    self._thinking_off_ok = False   # model rejects an explicit thinking block
                     continue
                 if any(k in msg.lower() for k in _RETRYABLE) and attempt < self.max_retries:
                     time.sleep(min(2 ** attempt, 30))
