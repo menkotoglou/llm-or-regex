@@ -1,0 +1,29 @@
+# Fill this in ON THE DAY you run bench.cost, from the providers' official pricing pages,
+# and keep the date. Prices change; the slide shows `as_of`.
+# All prices in USD per 1M tokens; eur_per_usd from the ECB reference rate on that day.
+
+as_of = ""            # e.g. "2026-09-20"
+eur_per_usd = 0.0     # e.g. 0.86
+
+# One section per LLM arm, keyed "<provider>:<model-id>" exactly as passed to --arm (without "llm:").
+[llm."anthropic:claude-haiku-4-5-20251001"]
+input_per_mtok = 0.0
+output_per_mtok = 0.0
+
+[llm."anthropic:claude-opus-5"]
+input_per_mtok = 0.0
+output_per_mtok = 0.0
+
+[llm."openai:REPLACE-small-model"]
+input_per_mtok = 0.0
+output_per_mtok = 0.0
+
+[llm."openai:REPLACE-frontier-model"]
+input_per_mtok = 0.0
+output_per_mtok = 0.0
+
+# The instance you would actually run apc/own on in production (e.g. the tier that fits the
+# measured RSS with headroom). Used for the local arms' EUR/1M.
+[compute]
+name = ""            # e.g. "Hetzner CX22, 2 vCPU / 4 GB"
+usd_per_hour = 0.0

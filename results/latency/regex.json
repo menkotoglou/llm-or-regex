@@ -1,0 +1,23 @@
+{
+  "arm": "regex",
+  "sample": "surge-1k",
+  "n": 200,
+  "warmup": 50,
+  "errors": 0,
+  "latency_ms": {
+    "n": 200,
+    "p50": 0.09198200001492296,
+    "p95": 0.41956400002618466,
+    "p99": 0.8489839999583637,
+    "mean": 0.14154463000153328,
+    "max": 1.7922449999900891
+  },
+  "retries_total": 0,
+  "sequential_items_per_s": 6972.969458224395,
+  "machine": {
+    "platform": "Linux-6.18.44-fc-v33-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "cpu": "x86_64"
+  },
+  "measured_at": "2026-09-16 20:09 UTC"
+}

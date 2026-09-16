@@ -1,0 +1,174 @@
+{
+  "generated": "2026-09-16 20:09",
+  "git": "uncommitted",
+  "policy": "open",
+  "arms": {
+    "regex": {
+      "metrics": {
+        "surge-1k": {
+          "n": 999,
+          "tp": 124,
+          "fp": 18,
+          "fn": 377,
+          "tn": 480,
+          "accuracy": 0.6046046046046046,
+          "precision": 0.8732394366197183,
+          "recall": 0.24750499001996007,
+          "f1": 0.3856920684292379,
+          "malformed": 0,
+          "errors": 0,
+          "dropped": 0,
+          "malformed_rate": 0.0,
+          "policy": "open"
+        },
+        "obfuscation": {
+          "n": 744,
+          "tp": 180,
+          "fp": 0,
+          "fn": 564,
+          "tn": 0,
+          "accuracy": 0.24193548387096775,
+          "precision": 1.0,
+          "recall": 0.24193548387096775,
+          "f1": 0.38961038961038963,
+          "malformed": 0,
+          "errors": 0,
+          "dropped": 0,
+          "malformed_rate": 0.0,
+          "policy": "open"
+        }
+      },
+      "latency": {
+        "arm": "regex",
+        "sample": "surge-1k",
+        "n": 200,
+        "warmup": 50,
+        "errors": 0,
+        "latency_ms": {
+          "n": 200,
+          "p50": 0.09198200001492296,
+          "p95": 0.41956400002618466,
+          "p99": 0.8489839999583637,
+          "mean": 0.14154463000153328,
+          "max": 1.7922449999900891
+        },
+        "retries_total": 0,
+        "sequential_items_per_s": 6972.969458224395,
+        "machine": {
+          "platform": "Linux-6.18.44-fc-v33-x86_64-with-glibc2.39",
+          "python": "3.12.3",
+          "cpu": "x86_64"
+        },
+        "measured_at": "2026-09-16 20:09 UTC"
+      },
+      "cost": null,
+      "determinism": null
+    },
+    "apc": {
+      "metrics": {
+        "surge-1k": {
+          "n": 999,
+          "tp": 241,
+          "fp": 18,
+          "fn": 260,
+          "tn": 480,
+          "accuracy": 0.7217217217217218,
+          "precision": 0.9305019305019305,
+          "recall": 0.4810379241516966,
+          "f1": 0.6342105263157896,
+          "malformed": 0,
+          "errors": 0,
+          "dropped": 0,
+          "malformed_rate": 0.0,
+          "policy": "open"
+        },
+        "obfuscation": {
+          "n": 744,
+          "tp": 321,
+          "fp": 0,
+          "fn": 423,
+          "tn": 0,
+          "accuracy": 0.4314516129032258,
+          "precision": 1.0,
+          "recall": 0.4314516129032258,
+          "f1": 0.6028169014084507,
+          "malformed": 0,
+          "errors": 0,
+          "dropped": 0,
+          "malformed_rate": 0.0,
+          "policy": "open"
+        }
+      },
+      "latency": {
+        "arm": "apc",
+        "sample": "surge-1k",
+        "n": 200,
+        "warmup": 50,
+        "errors": 0,
+        "latency_ms": {
+          "n": 200,
+          "p50": 2.6266010000313145,
+          "p95": 3.1683640000323976,
+          "p99": 3.6666080000031798,
+          "mean": 2.666789924998909,
+          "max": 3.861040000003868
+        },
+        "retries_total": 0,
+        "sequential_items_per_s": 374.12129943340256,
+        "machine": {
+          "platform": "Linux-6.18.44-fc-v33-x86_64-with-glibc2.39",
+          "python": "3.12.3",
+          "cpu": "x86_64"
+        },
+        "measured_at": "2026-09-16 20:09 UTC",
+        "batch": {
+          "batch": 1000,
+          "reps": 5,
+          "best_s": 0.016661505999991277,
+          "items_per_s": 60018.58415442899
+        },
+        "cold_start": {
+          "reps": 5,
+          "import_ms": {
+            "n": 5,
+            "p50": 1075.7,
+            "p95": 1084.5,
+            "p99": 1084.5,
+            "mean": 1072.5400000000002,
+            "max": 1084.5
+          },
+          "first_predict_ms": {
+            "n": 5,
+            "p50": 11.4,
+            "p95": 11.5,
+            "p99": 11.5,
+            "mean": 11.18,
+            "max": 11.5
+          },
+          "max_rss_mb": {
+            "n": 5,
+            "p50": 155.7,
+            "p95": 155.7,
+            "p99": 155.7,
+            "mean": 155.7,
+            "max": 155.7
+          }
+        },
+        "version": "1.9.0"
+      },
+      "cost": null,
+      "determinism": {
+        "arm": "apc",
+        "sample": "surge-1k",
+        "runs": 2,
+        "n": 200,
+        "disagreeing_items": 0,
+        "disagreement_rate": 0.0,
+        "items_with_malformed": 0,
+        "malformed_item_rate": 0.0,
+        "flip_direction": {},
+        "examples": []
+      }
+    }
+  }
+}

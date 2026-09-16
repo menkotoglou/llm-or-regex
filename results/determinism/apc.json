@@ -1,0 +1,12 @@
+{
+  "arm": "apc",
+  "sample": "surge-1k",
+  "runs": 2,
+  "n": 200,
+  "disagreeing_items": 0,
+  "disagreement_rate": 0.0,
+  "items_with_malformed": 0,
+  "malformed_item_rate": 0.0,
+  "flip_direction": {},
+  "examples": []
+}
