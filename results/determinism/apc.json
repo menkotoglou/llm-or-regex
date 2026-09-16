@@ -1,6 +1,6 @@
 {
   "arm": "apc",
-  "sample": "surge-1k",
+  "sample": "balanced-2k",
   "runs": 2,
   "n": 200,
   "disagreeing_items": 0,

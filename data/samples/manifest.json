@@ -1,0 +1,21 @@
+{
+  "source": "hf",
+  "seed": 20261012,
+  "threshold": 0.5,
+  "n": 2000,
+  "pool_size": 1775053,
+  "pool_prevalence": 0.0801,
+  "balanced-2k": {
+    "toxic": 1000,
+    "clean": 1000
+  },
+  "natural-2k": {
+    "toxic": 157,
+    "clean": 1843,
+    "prevalence": 0.0785
+  },
+  "train-4k": {
+    "n": 4000,
+    "disjoint_from_eval": true
+  }
+}

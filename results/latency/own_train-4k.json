@@ -1,0 +1,23 @@
+{
+  "arm": "own:train-4k",
+  "sample": "balanced-2k",
+  "n": 200,
+  "warmup": 50,
+  "errors": 0,
+  "latency_ms": {
+    "n": 200,
+    "p50": 0.56975003099069,
+    "p95": 0.9317909716628492,
+    "p99": 0.9865000029094517,
+    "mean": 0.6074633420212194,
+    "max": 1.0028329561464489
+  },
+  "retries_total": 0,
+  "sequential_items_per_s": 1642.5744252565735,
+  "machine": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.3",
+    "cpu": "arm"
+  },
+  "measured_at": "2026-09-16 23:36 EEST"
+}
