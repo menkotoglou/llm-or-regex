@@ -182,7 +182,7 @@ _JSON_OBJ = re.compile(r"\{.*?\}", re.S)
 # tokens and never approached 24, so their results are unaffected by this change.
 MAX_OUT = 256
 
-_RETRYABLE = ("rate", "429", "overloaded", "529", "500", "502", "503", "504", "timeout", "connection")
+_RETRYABLE = ("rate", "429", "overloaded", "529", "500", "502", "503", "504", "timeout", "timed out", "connection")
 
 
 def parse_verdict(text: str) -> Optional[int]:

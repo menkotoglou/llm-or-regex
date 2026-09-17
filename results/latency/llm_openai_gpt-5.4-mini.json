@@ -1,0 +1,23 @@
+{
+  "arm": "llm:openai:gpt-5.4-mini",
+  "sample": "balanced-2k",
+  "n": 200,
+  "warmup": 50,
+  "errors": 0,
+  "latency_ms": {
+    "n": 200,
+    "p50": 624.1084169596434,
+    "p95": 811.7369169485755,
+    "p99": 990.2514159912243,
+    "mean": 654.4038291886682,
+    "max": 2202.116458036471
+  },
+  "retries_total": 0,
+  "sequential_items_per_s": 1.5279511508529473,
+  "machine": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.3",
+    "cpu": "arm"
+  },
+  "measured_at": "2026-09-17 10:17 EEST"
+}
