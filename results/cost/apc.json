@@ -1,0 +1,12 @@
+{
+  "arm": "apc",
+  "instance": "DigitalOcean Basic, 1 vCPU / 2 GiB",
+  "usd_per_hour": 0.01786,
+  "sequential_items_per_s": 852.768154033601,
+  "prices_as_of": "2026-09-17",
+  "usd_per_1m": 0.005817655229789025,
+  "eur_per_1m": 0.005042743553181127,
+  "batch_items_per_s": 81841.71355749035,
+  "usd_per_1m_batch": 6.0618368011394824e-05,
+  "eur_per_1m_batch": 5.254400139227703e-05
+}

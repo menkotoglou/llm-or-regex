@@ -1,0 +1,14 @@
+{
+  "arm": "llm:anthropic:claude-haiku-4-5-20251001",
+  "sample": "natural-2k",
+  "n": 2000,
+  "mean_tokens_in": 190.793,
+  "mean_tokens_out": 9.961,
+  "usd_per_1m": 240.598,
+  "eur_per_1m": 208.55034640000002,
+  "prices_as_of": "2026-09-17",
+  "price": {
+    "input_per_mtok": 1.0,
+    "output_per_mtok": 5.0
+  }
+}

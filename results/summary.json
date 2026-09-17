@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-17 10:45",
-  "git": "80aadae",
+  "generated": "2026-09-17 12:45",
+  "git": "2b2444a",
   "policy": "open",
   "arms": {
     "regex": {
@@ -77,7 +77,15 @@
         },
         "measured_at": "2026-09-16 23:36 EEST"
       },
-      "cost": null,
+      "cost": {
+        "arm": "regex",
+        "instance": "DigitalOcean Basic, 1 vCPU / 2 GiB",
+        "usd_per_hour": 0.01786,
+        "sequential_items_per_s": 4819.775578683095,
+        "prices_as_of": "2026-09-17",
+        "usd_per_1m": 0.0010293240899126332,
+        "eur_per_1m": 0.0008922181211362705
+      },
       "determinism": null
     },
     "apc": {
@@ -188,7 +196,18 @@
         },
         "version": "1.9.0"
       },
-      "cost": null,
+      "cost": {
+        "arm": "apc",
+        "instance": "DigitalOcean Basic, 1 vCPU / 2 GiB",
+        "usd_per_hour": 0.01786,
+        "sequential_items_per_s": 852.768154033601,
+        "prices_as_of": "2026-09-17",
+        "usd_per_1m": 0.005817655229789025,
+        "eur_per_1m": 0.005042743553181127,
+        "batch_items_per_s": 81841.71355749035,
+        "usd_per_1m_batch": 6.0618368011394824e-05,
+        "eur_per_1m_batch": 5.254400139227703e-05
+      },
       "determinism": {
         "arm": "apc",
         "sample": "balanced-2k",
@@ -276,7 +295,15 @@
         },
         "measured_at": "2026-09-16 23:36 EEST"
       },
-      "cost": null,
+      "cost": {
+        "arm": "own:train-4k",
+        "instance": "DigitalOcean Basic, 1 vCPU / 2 GiB",
+        "usd_per_hour": 0.01786,
+        "sequential_items_per_s": 1642.5744252565735,
+        "prices_as_of": "2026-09-17",
+        "usd_per_1m": 0.0030203265281791873,
+        "eur_per_1m": 0.0026180190346257195
+      },
       "determinism": null
     },
     "llm:anthropic:claude-haiku-4-5-20251001": {
@@ -353,7 +380,20 @@
         },
         "measured_at": "2026-09-17 00:26 EEST"
       },
-      "cost": null,
+      "cost": {
+        "arm": "llm:anthropic:claude-haiku-4-5-20251001",
+        "sample": "natural-2k",
+        "n": 2000,
+        "mean_tokens_in": 190.793,
+        "mean_tokens_out": 9.961,
+        "usd_per_1m": 240.598,
+        "eur_per_1m": 208.55034640000002,
+        "prices_as_of": "2026-09-17",
+        "price": {
+          "input_per_mtok": 1.0,
+          "output_per_mtok": 5.0
+        }
+      },
       "determinism": {
         "arm": "llm:anthropic:claude-haiku-4-5-20251001",
         "sample": "balanced-2k",
@@ -585,7 +625,20 @@
         },
         "measured_at": "2026-09-17 00:33 EEST"
       },
-      "cost": null,
+      "cost": {
+        "arm": "llm:anthropic:claude-opus-5",
+        "sample": "natural-2k",
+        "n": 2000,
+        "mean_tokens_in": 272.7485,
+        "mean_tokens_out": 10.0,
+        "usd_per_1m": 1613.7424999999998,
+        "eur_per_1m": 1398.7919989999998,
+        "prices_as_of": "2026-09-17",
+        "price": {
+          "input_per_mtok": 5.0,
+          "output_per_mtok": 25.0
+        }
+      },
       "determinism": {
         "arm": "llm:anthropic:claude-opus-5",
         "sample": "balanced-2k",
@@ -719,7 +772,20 @@
         },
         "measured_at": "2026-09-17 10:17 EEST"
       },
-      "cost": null,
+      "cost": {
+        "arm": "llm:openai:gpt-5.4-mini",
+        "sample": "natural-2k",
+        "n": 2000,
+        "mean_tokens_in": 172.9105,
+        "mean_tokens_out": 9.258,
+        "usd_per_1m": 171.343875,
+        "eur_per_1m": 148.52087085,
+        "prices_as_of": "2026-09-17",
+        "price": {
+          "input_per_mtok": 0.75,
+          "output_per_mtok": 4.5
+        }
+      },
       "determinism": {
         "arm": "llm:openai:gpt-5.4-mini",
         "sample": "balanced-2k",
@@ -951,7 +1017,20 @@
         },
         "measured_at": "2026-09-17 10:25 EEST"
       },
-      "cost": null,
+      "cost": {
+        "arm": "llm:openai:gpt-6-astra",
+        "sample": "natural-2k",
+        "n": 2000,
+        "mean_tokens_in": 172.9105,
+        "mean_tokens_out": 16.065,
+        "usd_per_1m": 2532.355,
+        "eur_per_1m": 2195.045314,
+        "prices_as_of": "2026-09-17",
+        "price": {
+          "input_per_mtok": 10.0,
+          "output_per_mtok": 50.0
+        }
+      },
       "determinism": {
         "arm": "llm:openai:gpt-6-astra",
         "sample": "balanced-2k",

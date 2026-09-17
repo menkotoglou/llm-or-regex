@@ -2,8 +2,8 @@
 # and keep the date. Prices change; the slide shows `as_of`.
 # All prices in USD per 1M tokens; eur_per_usd from the ECB reference rate on that day.
 
-as_of = ""            # e.g. "2026-09-20"
-eur_per_usd = 0.0     # e.g. 0.86
+as_of = "2026-09-17"  # prices read from the providers' official pages on this date
+eur_per_usd = 0.8668  # = 1/1.1537, ECB USD reference rate fixed 2026-09-16 (latest published)
 
 # One section per LLM arm, keyed "<provider>:<model-id>" exactly as passed to --arm (without "llm:").
 [llm."anthropic:claude-haiku-4-5-20251001"]   # LLM_SMALL, as run
@@ -15,12 +15,12 @@ input_per_mtok = 5.00
 output_per_mtok = 25.00
 
 [llm."openai:gpt-5.4-mini"]                   # OpenAI small, as run
-input_per_mtok = 0.0
-output_per_mtok = 0.0
+input_per_mtok = 0.75
+output_per_mtok = 4.50
 
 [llm."openai:gpt-6-astra"]                    # OpenAI frontier, as run
-input_per_mtok = 0.0
-output_per_mtok = 0.0
+input_per_mtok = 10.00
+output_per_mtok = 50.00
 
 # The instance you would actually run apc/own on in production (e.g. the tier that fits the
 # measured RSS with headroom). Used for the local arms' EUR/1M.
@@ -28,5 +28,8 @@ output_per_mtok = 0.0
 # (results/latency/apc.json). Pick a tier with headroom over 188 MB and put its
 # real hourly price here -- this is the number the local arms' EUR/1M comes from.
 [compute]
-name = ""            # e.g. "Hetzner CX22, 2 vCPU / 4 GB"
-usd_per_hour = 0.0
+# Chosen deliberately conservative: a DEDICATED box, not the in-process answer.
+# apc needs 188 MB, so this tier has ~10x headroom. If apc actually runs inside the
+# existing Django process, its marginal cost is ~0 and this number overstates it.
+name = "DigitalOcean Basic, 1 vCPU / 2 GiB"
+usd_per_hour = 0.01786

@@ -1,0 +1,14 @@
+{
+  "arm": "llm:openai:gpt-5.4-mini",
+  "sample": "natural-2k",
+  "n": 2000,
+  "mean_tokens_in": 172.9105,
+  "mean_tokens_out": 9.258,
+  "usd_per_1m": 171.343875,
+  "eur_per_1m": 148.52087085,
+  "prices_as_of": "2026-09-17",
+  "price": {
+    "input_per_mtok": 0.75,
+    "output_per_mtok": 4.5
+  }
+}

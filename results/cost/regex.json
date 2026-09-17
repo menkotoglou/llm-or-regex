@@ -1,0 +1,9 @@
+{
+  "arm": "regex",
+  "instance": "DigitalOcean Basic, 1 vCPU / 2 GiB",
+  "usd_per_hour": 0.01786,
+  "sequential_items_per_s": 4819.775578683095,
+  "prices_as_of": "2026-09-17",
+  "usd_per_1m": 0.0010293240899126332,
+  "eur_per_1m": 0.0008922181211362705
+}

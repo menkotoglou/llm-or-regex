@@ -1,0 +1,9 @@
+{
+  "arm": "own:train-4k",
+  "instance": "DigitalOcean Basic, 1 vCPU / 2 GiB",
+  "usd_per_hour": 0.01786,
+  "sequential_items_per_s": 1642.5744252565735,
+  "prices_as_of": "2026-09-17",
+  "usd_per_1m": 0.0030203265281791873,
+  "eur_per_1m": 0.0026180190346257195
+}

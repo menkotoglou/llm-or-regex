@@ -1,0 +1,14 @@
+{
+  "arm": "llm:openai:gpt-6-astra",
+  "sample": "natural-2k",
+  "n": 2000,
+  "mean_tokens_in": 172.9105,
+  "mean_tokens_out": 16.065,
+  "usd_per_1m": 2532.355,
+  "eur_per_1m": 2195.045314,
+  "prices_as_of": "2026-09-17",
+  "price": {
+    "input_per_mtok": 10.0,
+    "output_per_mtok": 50.0
+  }
+}

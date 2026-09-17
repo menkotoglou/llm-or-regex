@@ -1,0 +1,14 @@
+{
+  "arm": "llm:anthropic:claude-opus-5",
+  "sample": "natural-2k",
+  "n": 2000,
+  "mean_tokens_in": 272.7485,
+  "mean_tokens_out": 10.0,
+  "usd_per_1m": 1613.7424999999998,
+  "eur_per_1m": 1398.7919989999998,
+  "prices_as_of": "2026-09-17",
+  "price": {
+    "input_per_mtok": 5.0,
+    "output_per_mtok": 25.0
+  }
+}
