@@ -1,0 +1,23 @@
+{
+  "arm": "llm:openai:gpt-6-astra",
+  "sample": "balanced-2k",
+  "n": 200,
+  "warmup": 50,
+  "errors": 0,
+  "latency_ms": {
+    "n": 200,
+    "p50": 1652.2310830187052,
+    "p95": 3773.5514999949373,
+    "p99": 4911.868791969027,
+    "mean": 1974.852852683689,
+    "max": 5980.513415997848
+  },
+  "retries_total": 0,
+  "sequential_items_per_s": 0.5063497377412008,
+  "machine": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.3",
+    "cpu": "arm"
+  },
+  "measured_at": "2026-09-17 10:25 EEST"
+}

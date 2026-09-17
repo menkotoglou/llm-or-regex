@@ -1,0 +1,142 @@
+{
+  "arm": "llm:openai:gpt-6-astra",
+  "sample": "balanced-2k",
+  "runs": 3,
+  "n": 200,
+  "disagreeing_items": 9,
+  "disagreement_rate": 0.045,
+  "items_with_malformed": 0,
+  "malformed_item_rate": 0.0,
+  "flip_direction": {
+    "toxic->mixed": 6,
+    "clean->mixed": 3
+  },
+  "examples": [
+    {
+      "item_id": "0b9306465d9a",
+      "label": 1,
+      "preds": [
+        1,
+        1,
+        0
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": true}",
+        "{\"toxic\": false}"
+      ]
+    },
+    {
+      "item_id": "4574cfc180ea",
+      "label": 1,
+      "preds": [
+        0,
+        1,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": false}",
+        "{\"toxic\": true}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "5578ce742807",
+      "label": 1,
+      "preds": [
+        1,
+        0,
+        0
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": false}",
+        "{\"toxic\": false}"
+      ]
+    },
+    {
+      "item_id": "85180143119c",
+      "label": 0,
+      "preds": [
+        1,
+        0,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": false}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "dbfb9410226b",
+      "label": 1,
+      "preds": [
+        1,
+        0,
+        0
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": false}",
+        "{\"toxic\": false}"
+      ]
+    },
+    {
+      "item_id": "764dae2a51d4",
+      "label": 1,
+      "preds": [
+        0,
+        1,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": false}",
+        "{\"toxic\": true}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "6fa19594ee2a",
+      "label": 0,
+      "preds": [
+        1,
+        0,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": false}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "3ebdc811591f",
+      "label": 0,
+      "preds": [
+        1,
+        0,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": false}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "5f72a96caed3",
+      "label": 1,
+      "preds": [
+        0,
+        0,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": false}",
+        "{\"toxic\": false}",
+        "{\"toxic\": true}"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "arm": "llm:openai:gpt-5.4-mini",
+  "sample": "balanced-2k",
+  "runs": 3,
+  "n": 200,
+  "disagreeing_items": 11,
+  "disagreement_rate": 0.055,
+  "items_with_malformed": 0,
+  "malformed_item_rate": 0.0,
+  "flip_direction": {
+    "toxic->mixed": 7,
+    "clean->mixed": 4
+  },
+  "examples": [
+    {
+      "item_id": "4831ee9d1af2",
+      "label": 0,
+      "preds": [
+        1,
+        0,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\":false}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "b1835f48df35",
+      "label": 1,
+      "preds": [
+        0,
+        0,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": false}",
+        "{\"toxic\": false}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "3b661a15baa4",
+      "label": 1,
+      "preds": [
+        0,
+        0,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": false}",
+        "{\"toxic\": false}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "a7d0ae11c0c9",
+      "label": 0,
+      "preds": [
+        1,
+        0,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": false}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "5eb24db54f7a",
+      "label": 1,
+      "preds": [
+        0,
+        0,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": false}",
+        "{\"toxic\": false}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "70662997cc11",
+      "label": 1,
+      "preds": [
+        1,
+        0,
+        0
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": false}",
+        "{\"toxic\": false}"
+      ]
+    },
+    {
+      "item_id": "d185035a5b56",
+      "label": 0,
+      "preds": [
+        1,
+        0,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": false}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "843639272d55",
+      "label": 1,
+      "preds": [
+        1,
+        0,
+        0
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": false}",
+        "{\"toxic\": false}"
+      ]
+    },
+    {
+      "item_id": "0827c3653b17",
+      "label": 1,
+      "preds": [
+        1,
+        1,
+        0
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": true}",
+        "{\"toxic\":false}"
+      ]
+    },
+    {
+      "item_id": "e4c356e853ef",
+      "label": 0,
+      "preds": [
+        1,
+        1,
+        0
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": true}",
+        "{\"toxic\": false}"
+      ]
+    }
+  ]
+}
