@@ -82,3 +82,30 @@ a comment attributing behaviour to fetal alcohol syndrome (disability), and Murk
 - **"shame on you."** → apc 0.868, flagged. **"Execute him."** → apc 0.007, missed.
 - **"That is silly."** → flagged by apc *and* own. **"…your business plan sucks."** → caught by
   the regex, missed by own.
+
+---
+
+## The LLM arms — and an honest warning
+
+On surge-1k the LLM arms make very few errors (Haiku: 1 FP / 39 FN out of 1000;
+Opus 5: 3 FP / 20 FN), and **rule 6 rejects almost all of them.** They are overwhelmingly
+US political speech: Biden, Trump, Youngkin, McAuliffe, "LET'S GO BRANDON", "magats",
+"Marxists", "Nazi Style Media". None of that can go on the slide.
+
+What survives the filter:
+
+1. **Haiku 4.5's only false positive in 1,000 items** — "elise onetrick whos literally never
+   noticed this interaction wtf". Gaming slang plus a mild acronym. That single row *is* the
+   P=0.998 story: one comment in a thousand, and it's a video-game complaint.
+2. **Opus 5 missed "POS!"** — four characters, unambiguously hostile, scored clean.
+3. **Opus 5 missed** "With all the terrible shit he's done in his life, I would be afraid to
+   die too" — profanity *and* hostility, still missed.
+
+Borderline, your judgement: Opus 5 flagged *"That's one of the things that I'm really proud
+of punx for. Never gave up the tradition of NeoNazi bashing."* — the model flagging
+anti-fascist speech as toxic is a classic moderation failure and a strong example. "NeoNazi"
+is a political ideology, not one of rule 6's protected categories, so it arguably passes the
+letter of the rule. It will still make a room tense. I'd brief it carefully or drop it.
+
+**Say this on the slide:** the reason there are two LLM examples and not five is that the
+filter removed the rest. That is itself a finding about what these datasets are made of.

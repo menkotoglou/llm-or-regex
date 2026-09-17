@@ -113,3 +113,62 @@ Slide 21 (cascade): needs the LLM arms, then `make cascade`.
 ## Provenance
 
 commit `[fill after the run]` · `git rev-parse --short HEAD`
+
+---
+
+# FINAL — all four LLM arms, costs included  (commit 732c848)
+
+22,688 scored LLM items. **0 malformed. 0 unresolved errors.** Four models, two vendors.
+
+## Slide 9 / 12 — the complete table
+
+| arm | F1 2017 | F1 natural | F1 2022 | p50 | p99 | €/1M | disagree |
+|---|---|---|---|---|---|---|---|
+| regex | 0.167 | 0.161 | 0.386 | 0.15 ms | 0.70 ms | 0.00 | — |
+| apc | 0.462 | 0.498 | 0.634 | 1.17 ms | 1.27 ms | 0.01 | 0.0% |
+| own:train-4k | **0.774** | 0.364 | 0.739 | 0.57 ms | 0.99 ms | 0.00 | — |
+| gpt-5.4-mini | 0.709 | 0.415 | 0.968 | 624 ms | 990 ms | 148.52 | 5.5% |
+| Haiku 4.5 | 0.588 | 0.447 | 0.959 | 676 ms | 1667 ms | 208.55 | 6.5% |
+| Opus 5 | 0.666 | 0.467 | 0.977 | 1819 ms | 3608 ms | 1398.79 | 1.5% |
+| gpt-6-astra | 0.749 | 0.407 | **0.989** | 1652 ms | 4912 ms | 2195.05 | 4.5% |
+
+Costs: natural-2k (8% toxic), real token counts, prices as_of 2026-09-17,
+eur_per_usd 0.8668 (ECB 16 Sep fixing), compute = DigitalOcean 1 vCPU / 2 GiB @ $0.01786/h.
+
+Headline ratios: **apc €0.01 vs astra €2,195 = ~220,000x.**
+**astra costs 14.8x gpt-5.4-mini and buys +0.021 F1**, with a 4.9x worse p99.
+
+## Slide 10b — identity FPs / 115
+
+regex 0 · apc 6 · own:surge-1k 1 · **own:train-4k 30** · all four LLM arms **0**.
+
+## Slide 11 — obfuscation recall %
+
+| transform | regex | apc | own | Haiku | Opus 5 | mini | astra |
+|---|---|---|---|---|---|---|---|
+| original | 100.0 | 50.5 | 74.2 | 50.5 | 59.1 | 62.4 | 66.7 |
+| l33t | 1.1 | 11.8 | 60.2 | 57.0 | 59.1 | 64.5 | 72.0 |
+| spaced | 0.0 | 11.8 | 59.1 | 54.8 | 55.9 | 65.6 | 69.9 |
+| homoglyph | 8.6 | 14.0 | 60.2 | 53.8 | 55.9 | 66.7 | 68.8 |
+| asterisk | 1.1 | 11.8 | 61.3 | 59.1 | 59.1 | 67.7 | 73.1 |
+| concatenated | 5.4 | 11.8 | 65.6 | 54.8 | 60.2 | 66.7 | 66.7 |
+
+The LLM columns are FLAT. The OpenAI pair score HIGHER on obfuscated text than on clean.
+
+## Slide 21 — cascade (router = own:train-4k, natural-2k)
+
+| LLM | alone F1 / €1M | best cascade F1 | LO/HI | traffic to LLM | €1M |
+|---|---|---|---|---|---|
+| Haiku 4.5 | 0.447 / 209 | 0.486 | 0.20/0.80 | 63.8% | 133 |
+| Opus 5 | 0.467 / 1399 | 0.482 | 0.30/0.95 | 48.5% | 679 |
+| gpt-5.4-mini | 0.415 / 149 | **0.457** | 0.30/0.80 | 44.5% | **66** |
+| gpt-6-astra | 0.407 / 2195 | 0.437 | 0.30/0.95 | 48.5% | 1066 |
+
+Every cascade beats its LLM alone on F1 AND roughly halves cost. Routing usually trades
+accuracy for money; here it buys both, because the router filters easy negatives that were
+destroying LLM precision at natural prevalence.
+
+## Slide 13 — determinism, four models
+
+Opus 5 1.5% · astra 4.5% · gpt-5.4-mini 5.5% · Haiku 6.5%. All at default sampling;
+temperature 0 was not reachable (see the rewrite note above).
