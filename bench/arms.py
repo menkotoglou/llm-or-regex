@@ -78,6 +78,36 @@ class RegexArm(Arm):
         self.pattern = re.compile(rf"\b(?:{alternation})\b", re.IGNORECASE)
         self.n_words = len(words)
 
+    def complete_retrying(self, system: str, user: str) -> tuple[str, int, int]:
+        """complete() under the same capability-discovery ladder predict() uses.
+
+        complete() alone raises on the first unsupported parameter, because the flags are
+        only ever flipped by the handler in _predict. Anything calling complete() directly
+        (bench.extract) needs this wrapper or it fails on every single item.
+        """
+        last_err = None
+        for attempt in range(1, self.max_retries + 1):
+            try:
+                return self.complete(system, user)
+            except Exception as e:  # noqa: BLE001
+                msg = str(e)
+                last_err = msg
+                low = msg.lower()
+                if "temperature" in low and self._temperature_ok:
+                    self._temperature_ok = False
+                    continue
+                if "thinking" in low and self._thinking_off_ok:
+                    self._thinking_off_ok = False
+                    continue
+                if "reasoning_effort" in low and self._reasoning_effort:
+                    self._reasoning_effort = "low" if self._reasoning_effort == "none" else None
+                    continue
+                if any(k in low for k in _RETRYABLE) and attempt < self.max_retries:
+                    time.sleep(min(2 ** attempt, 30))
+                    continue
+                break
+        raise RuntimeError(last_err or "unknown")
+
     def _meta(self) -> dict:
         m = {"model": self.model, "temperature_ok": self._temperature_ok}
         if self.provider == "anthropic":
@@ -109,6 +139,36 @@ class APCArm(Arm):
         self.threshold = threshold
         import importlib.metadata as md
         self.version = md.version("alt-profanity-check")
+
+    def complete_retrying(self, system: str, user: str) -> tuple[str, int, int]:
+        """complete() under the same capability-discovery ladder predict() uses.
+
+        complete() alone raises on the first unsupported parameter, because the flags are
+        only ever flipped by the handler in _predict. Anything calling complete() directly
+        (bench.extract) needs this wrapper or it fails on every single item.
+        """
+        last_err = None
+        for attempt in range(1, self.max_retries + 1):
+            try:
+                return self.complete(system, user)
+            except Exception as e:  # noqa: BLE001
+                msg = str(e)
+                last_err = msg
+                low = msg.lower()
+                if "temperature" in low and self._temperature_ok:
+                    self._temperature_ok = False
+                    continue
+                if "thinking" in low and self._thinking_off_ok:
+                    self._thinking_off_ok = False
+                    continue
+                if "reasoning_effort" in low and self._reasoning_effort:
+                    self._reasoning_effort = "low" if self._reasoning_effort == "none" else None
+                    continue
+                if any(k in low for k in _RETRYABLE) and attempt < self.max_retries:
+                    time.sleep(min(2 ** attempt, 30))
+                    continue
+                break
+        raise RuntimeError(last_err or "unknown")
 
     def _meta(self) -> dict:
         m = {"model": self.model, "temperature_ok": self._temperature_ok}
@@ -152,6 +212,36 @@ class OwnArm(Arm):
         t0 = time.perf_counter()
         self.pipe.fit(df["text"].values, df["label"].values)
         self.fit_seconds = time.perf_counter() - t0
+
+    def complete_retrying(self, system: str, user: str) -> tuple[str, int, int]:
+        """complete() under the same capability-discovery ladder predict() uses.
+
+        complete() alone raises on the first unsupported parameter, because the flags are
+        only ever flipped by the handler in _predict. Anything calling complete() directly
+        (bench.extract) needs this wrapper or it fails on every single item.
+        """
+        last_err = None
+        for attempt in range(1, self.max_retries + 1):
+            try:
+                return self.complete(system, user)
+            except Exception as e:  # noqa: BLE001
+                msg = str(e)
+                last_err = msg
+                low = msg.lower()
+                if "temperature" in low and self._temperature_ok:
+                    self._temperature_ok = False
+                    continue
+                if "thinking" in low and self._thinking_off_ok:
+                    self._thinking_off_ok = False
+                    continue
+                if "reasoning_effort" in low and self._reasoning_effort:
+                    self._reasoning_effort = "low" if self._reasoning_effort == "none" else None
+                    continue
+                if any(k in low for k in _RETRYABLE) and attempt < self.max_retries:
+                    time.sleep(min(2 ** attempt, 30))
+                    continue
+                break
+        raise RuntimeError(last_err or "unknown")
 
     def _meta(self) -> dict:
         m = {"model": self.model, "temperature_ok": self._temperature_ok}
@@ -232,9 +322,12 @@ class LLMArm(Arm):
 
     # one call, no retry logic -> returns (text, tokens_in, tokens_out)
     def _call(self, text: str) -> tuple[str, int, int]:
-        user = self.user_tmpl.replace("{text}", text)
+        return self.complete(self.system, self.user_tmpl.replace("{text}", text))
+
+    def complete(self, system: str, user: str) -> tuple[str, int, int]:
+        """One provider call under the discovered capability flags. Reused by bench.extract."""
         if self.provider == "anthropic":
-            kwargs = dict(model=self.model, max_tokens=MAX_OUT, system=self.system,
+            kwargs = dict(model=self.model, max_tokens=MAX_OUT, system=system,
                           messages=[{"role": "user", "content": user}])
             if self._temperature_ok:
                 kwargs["temperature"] = 0
@@ -245,7 +338,7 @@ class LLMArm(Arm):
             return out, r.usage.input_tokens, r.usage.output_tokens
         if self.provider == "openai":
             kwargs = dict(model=self.model,
-                          messages=[{"role": "system", "content": self.system},
+                          messages=[{"role": "system", "content": system},
                                     {"role": "user", "content": user}])
             if self._temperature_ok:
                 kwargs["temperature"] = 0
@@ -266,10 +359,41 @@ class LLMArm(Arm):
             return out, r.usage.prompt_tokens, r.usage.completion_tokens
         # fake: deterministic-ish, occasionally malformed, no network
         time.sleep(0.005)
+        text = user
         toxic = any(w in text.lower() for w in ("fuck", "shit", "idiot", "stupid", "kill", "hate"))
         if hash(text) % 97 == 0:
             return "Sure! This comment seems fine to me.", 120, 9
         return json.dumps({"toxic": toxic}), 120 + len(text) // 4, 6
+
+    def complete_retrying(self, system: str, user: str) -> tuple[str, int, int]:
+        """complete() under the same capability-discovery ladder predict() uses.
+
+        complete() alone raises on the first unsupported parameter, because the flags are
+        only ever flipped by the handler in _predict. Anything calling complete() directly
+        (bench.extract) needs this wrapper or it fails on every single item.
+        """
+        last_err = None
+        for attempt in range(1, self.max_retries + 1):
+            try:
+                return self.complete(system, user)
+            except Exception as e:  # noqa: BLE001
+                msg = str(e)
+                last_err = msg
+                low = msg.lower()
+                if "temperature" in low and self._temperature_ok:
+                    self._temperature_ok = False
+                    continue
+                if "thinking" in low and self._thinking_off_ok:
+                    self._thinking_off_ok = False
+                    continue
+                if "reasoning_effort" in low and self._reasoning_effort:
+                    self._reasoning_effort = "low" if self._reasoning_effort == "none" else None
+                    continue
+                if any(k in low for k in _RETRYABLE) and attempt < self.max_retries:
+                    time.sleep(min(2 ** attempt, 30))
+                    continue
+                break
+        raise RuntimeError(last_err or "unknown")
 
     def _meta(self) -> dict:
         m = {"model": self.model, "temperature_ok": self._temperature_ok}

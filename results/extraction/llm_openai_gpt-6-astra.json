@@ -1,0 +1,39 @@
+{
+  "arm": "llm:openai:gpt-6-astra",
+  "n": 200,
+  "errors": 0,
+  "malformed": 0,
+  "fields": {
+    "time": {
+      "accuracy": 0.9831932773109243,
+      "invention": 0.0,
+      "n_present": 119,
+      "n_absent": 81
+    },
+    "party_size": {
+      "accuracy": 1.0,
+      "invention": 0.0,
+      "n_present": 120,
+      "n_absent": 80
+    },
+    "date": {
+      "accuracy": 0.9646017699115044,
+      "invention": 0.0,
+      "n_present": 113,
+      "n_absent": 87
+    },
+    "cuisine": {
+      "accuracy": 0.5882352941176471,
+      "invention": 0.0,
+      "n_present": 119,
+      "n_absent": 81
+    },
+    "location": {
+      "accuracy": 0.9508196721311475,
+      "invention": 0.0,
+      "n_present": 122,
+      "n_absent": 78
+    }
+  },
+  "invention_overall": 0.0
+}

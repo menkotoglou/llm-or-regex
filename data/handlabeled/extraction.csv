@@ -1,0 +1,201 @@
+id,text,gold,n_present
+e9e74ca41122,Booking request: this saturday somewhere I can get a steak at 8 pm,"{""time"": ""20:00"", ""party_size"": null, ""date"": ""this saturday"", ""cuisine"": ""american"", ""location"": null}",3
+32c0c4e66940,Hey there. the day after tomorrow noon in the mood for dim sum,"{""time"": ""12:00"", ""party_size"": null, ""date"": ""the day after tomorrow"", ""cuisine"": ""chinese"", ""location"": null}",3
+38c129fc03b8,Hey there. close to the office next friday,"{""time"": null, ""party_size"": null, ""date"": ""next friday"", ""cuisine"": null, ""location"": ""the office""}",2
+81ad33522cc4,Can you sort this out? something with a wood-fired oven 8pm for four around Psyri,"{""time"": ""20:00"", ""party_size"": 4, ""date"": null, ""cuisine"": ""italian"", ""location"": ""psyri""}",4
+f77870483a0d,Hi! burgers 7.45pm next friday,"{""time"": ""19:45"", ""party_size"": null, ""date"": ""next friday"", ""cuisine"": ""american"", ""location"": null}",3
+2c4975916df0,"Hello, next friday near where we met last time we're eight","{""time"": null, ""party_size"": 8, ""date"": ""next friday"", ""cuisine"": null, ""location"": ""where we met last time""}",3
+a01176627b2f,Hi! walking distance from the hotel burgers tonight,"{""time"": null, ""party_size"": null, ""date"": ""tonight"", ""cuisine"": ""american"", ""location"": ""the hotel""}",3
+d70aaa4a2aa5,Quick one - a proper curry the day after tomorrow somewhere by the sea half seven,"{""time"": ""19:30"", ""party_size"": null, ""date"": ""the day after tomorrow"", ""cuisine"": ""indian"", ""location"": ""the sea""}",4
+3e972923eabc,"Hello, somewhere by the sea the two of us","{""time"": null, ""party_size"": 2, ""date"": null, ""cuisine"": null, ""location"": ""the sea""}",2
+aabc98b2ffba,Hi! next friday preferably something spicy from Kerala noon table for two,"{""time"": ""12:00"", ""party_size"": 2, ""date"": ""next friday"", ""cuisine"": ""indian"", ""location"": null}",4
+650e1664ec0a,Quick one - this saturday in Kolonaki for 4,"{""time"": null, ""party_size"": 4, ""date"": ""this saturday"", ""cuisine"": null, ""location"": ""kolonaki""}",3
+1e48ed0cd21f,"Hello, in Thiseio the two of us","{""time"": null, ""party_size"": 2, ""date"": null, ""cuisine"": null, ""location"": ""thiseio""}",2
+b4d6dbdbfa07,"Hello, table for two I could murder a souvlaki around Psyri noon","{""time"": ""12:00"", ""party_size"": 2, ""date"": null, ""cuisine"": ""greek"", ""location"": ""psyri""}",4
+b83b380d0e64,Quick one - near Syntagma 7.45pm the two of us that place that does the little dumplings,"{""time"": ""19:45"", ""party_size"": 2, ""date"": null, ""cuisine"": ""chinese"", ""location"": ""syntagma""}",4
+0c862e1ddfcf,"Hello, close to the office just me end of the month at nine","{""time"": ""21:00"", ""party_size"": 1, ""date"": ""end of the month"", ""cuisine"": null, ""location"": ""the office""}",4
+3d4dd1db6e8a,Can you sort this out? just me,"{""time"": null, ""party_size"": 1, ""date"": null, ""cuisine"": null, ""location"": null}",1
+52c15d07acd1,Quick one - 21:15 we're eight close to the office,"{""time"": ""21:15"", ""party_size"": 8, ""date"": null, ""cuisine"": null, ""location"": ""the office""}",3
+ceb7ac168283,"Hello, in Kolonaki half seven we're eight next friday","{""time"": ""19:30"", ""party_size"": 8, ""date"": ""next friday"", ""cuisine"": null, ""location"": ""kolonaki""}",4
+486fddf87575,Thanks in advance. close to the office,"{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": null, ""location"": ""the office""}",1
+44381e25dbba,Hey there. around Psyri a week on tuesday craving pasta,"{""time"": null, ""party_size"": null, ""date"": ""a week on tuesday"", ""cuisine"": ""italian"", ""location"": ""psyri""}",3
+8e14b1462c0e,Booking request: for 4 at nine,"{""time"": ""21:00"", ""party_size"": 4, ""date"": null, ""cuisine"": null, ""location"": null}",2
+73569bc0ca8c,Hey there. for four something with a wood-fired oven 21:15,"{""time"": ""21:15"", ""party_size"": 4, ""date"": null, ""cuisine"": ""italian"", ""location"": null}",3
+aff092d90c99,"Hello, table for two next friday 7.45pm","{""time"": ""19:45"", ""party_size"": 2, ""date"": ""next friday"", ""cuisine"": null, ""location"": null}",3
+f3ec3cfdd0d1,Hey there. on the 14th 21:15,"{""time"": ""21:15"", ""party_size"": null, ""date"": ""the 14th"", ""cuisine"": null, ""location"": null}",2
+23e714a9e512,Something with a wood-fired oven 8pm near where we met last time,"{""time"": ""20:00"", ""party_size"": null, ""date"": null, ""cuisine"": ""italian"", ""location"": ""where we met last time""}",3
+e22216cdd29f,Can you sort this out? next friday in Exarchia for 4 noon,"{""time"": ""12:00"", ""party_size"": 4, ""date"": ""next friday"", ""cuisine"": null, ""location"": ""exarchia""}",4
+902d8dce164e,Quick one - this saturday 8pm,"{""time"": ""20:00"", ""party_size"": null, ""date"": ""this saturday"", ""cuisine"": null, ""location"": null}",2
+0838d0c2f63f,Booking request: just me something with good mezedes in Kolonaki,"{""time"": null, ""party_size"": 1, ""date"": null, ""cuisine"": ""greek"", ""location"": ""kolonaki""}",3
+36f9c2723094,Hi! a week on tuesday anywhere that does a decent ramen party of six,"{""time"": null, ""party_size"": 6, ""date"": ""a week on tuesday"", ""cuisine"": ""japanese"", ""location"": null}",3
+bee253bd8a39,Tonight burgers,"{""time"": null, ""party_size"": null, ""date"": ""tonight"", ""cuisine"": ""american"", ""location"": null}",2
+1f73e57b9a1e,Hi! somewhere I can get a steak half seven in Exarchia for 4,"{""time"": ""19:30"", ""party_size"": 4, ""date"": null, ""cuisine"": ""american"", ""location"": ""exarchia""}",4
+5c4e1b0ef618,Can you sort this out? tomorrow near Syntagma something with good mezedes,"{""time"": null, ""party_size"": null, ""date"": ""tomorrow"", ""cuisine"": ""greek"", ""location"": ""syntagma""}",3
+e626760ca5b3,Quick one - a dozen of us close to the office 19:30,"{""time"": ""19:30"", ""party_size"": 12, ""date"": null, ""cuisine"": null, ""location"": ""the office""}",3
+6f2ef962c24a,Something with good mezedes on the 14th walking distance from the hotel 19:30,"{""time"": ""19:30"", ""party_size"": null, ""date"": ""the 14th"", ""cuisine"": ""greek"", ""location"": ""the hotel""}",4
+9e9286160bba,Booking request: at 8 pm tapas maybe walking distance from the hotel,"{""time"": ""20:00"", ""party_size"": null, ""date"": null, ""cuisine"": ""spanish"", ""location"": ""the hotel""}",3
+50d603303fc6,Thanks in advance. noon that place that does the little dumplings,"{""time"": ""12:00"", ""party_size"": null, ""date"": null, ""cuisine"": ""chinese"", ""location"": null}",2
+c1bb41d22000,Hi! walking distance from the hotel 19:30 a week on tuesday we're eight,"{""time"": ""19:30"", ""party_size"": 8, ""date"": ""a week on tuesday"", ""cuisine"": null, ""location"": ""the hotel""}",4
+5f8a6bd8cc6f,On the 14th table for two anywhere that does a decent ramen at nine,"{""time"": ""21:00"", ""party_size"": 2, ""date"": ""the 14th"", ""cuisine"": ""japanese"", ""location"": null}",4
+ed3e82e1a970,Booking request: something with a wood-fired oven at nine,"{""time"": ""21:00"", ""party_size"": null, ""date"": null, ""cuisine"": ""italian"", ""location"": null}",2
+59dabfe87312,A proper curry the day after tomorrow 7.45pm near Syntagma,"{""time"": ""19:45"", ""party_size"": null, ""date"": ""the day after tomorrow"", ""cuisine"": ""indian"", ""location"": ""syntagma""}",4
+829d6d31288d,Quick one - on the 14th close to the office somewhere I can get a steak at 8 pm,"{""time"": ""20:00"", ""party_size"": null, ""date"": ""the 14th"", ""cuisine"": ""american"", ""location"": ""the office""}",4
+f9f16d81ccb0,Quick one - in the mood for dim sum for 4,"{""time"": null, ""party_size"": 4, ""date"": null, ""cuisine"": ""chinese"", ""location"": null}",2
+2c7470e54122,Hi! just me a week on tuesday noon,"{""time"": ""12:00"", ""party_size"": 1, ""date"": ""a week on tuesday"", ""cuisine"": null, ""location"": null}",3
+4bc4aec3ca2a,Hi! 7.45pm a week on tuesday just me,"{""time"": ""19:45"", ""party_size"": 1, ""date"": ""a week on tuesday"", ""cuisine"": null, ""location"": null}",3
+346a43b11171,Hey there. for 4 somewhere by the sea next week 7.45pm,"{""time"": ""19:45"", ""party_size"": 4, ""date"": ""next week"", ""cuisine"": null, ""location"": ""the sea""}",4
+13775025d761,Thanks in advance. party of six near where we met last time the day after tomorrow preferably something spicy from Kerala,"{""time"": null, ""party_size"": 6, ""date"": ""the day after tomorrow"", ""cuisine"": ""indian"", ""location"": ""where we met last time""}",4
+448bf2b118c7,Hi! I could murder a souvlaki for four near where we met last time,"{""time"": null, ""party_size"": 4, ""date"": null, ""cuisine"": ""greek"", ""location"": ""where we met last time""}",3
+3d0a2ad68b5d,"Hello, tapas maybe near where we met last time","{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": ""spanish"", ""location"": ""where we met last time""}",2
+c931cad47a76,Quick one - walking distance from the hotel next week noon,"{""time"": ""12:00"", ""party_size"": null, ""date"": ""next week"", ""cuisine"": null, ""location"": ""the hotel""}",3
+d6a38f3c7d25,Hey there. somewhere by the sea tonight,"{""time"": null, ""party_size"": null, ""date"": ""tonight"", ""cuisine"": null, ""location"": ""the sea""}",2
+c3d6dd1a5949,Hey there. in Thiseio 8pm the two of us somewhere I can get a steak,"{""time"": ""20:00"", ""party_size"": 2, ""date"": null, ""cuisine"": ""american"", ""location"": ""thiseio""}",4
+87d3ba877d19,"Thanks in advance. small plates, lots of them the day after tomorrow in Exarchia a dozen of us","{""time"": null, ""party_size"": 12, ""date"": ""the day after tomorrow"", ""cuisine"": ""spanish"", ""location"": ""exarchia""}",4
+e445b3291362,Can you sort this out? walking distance from the hotel we're eight preferably something spicy from Kerala 19:30,"{""time"": ""19:30"", ""party_size"": 8, ""date"": null, ""cuisine"": ""indian"", ""location"": ""the hotel""}",4
+d07f76e0d3ae,Quick one - the day after tomorrow table for two near Syntagma noon,"{""time"": ""12:00"", ""party_size"": 2, ""date"": ""the day after tomorrow"", ""cuisine"": null, ""location"": ""syntagma""}",4
+77e866d41dba,Quick one - 19:30 around Psyri in the mood for dim sum for four,"{""time"": ""19:30"", ""party_size"": 4, ""date"": null, ""cuisine"": ""chinese"", ""location"": ""psyri""}",4
+41f27b8c18ba,"Tonight a dozen of us raw fish, if that's an option 8pm","{""time"": ""20:00"", ""party_size"": 12, ""date"": ""tonight"", ""cuisine"": ""japanese"", ""location"": null}",4
+3e104733778a,Quick one - around Psyri noon this saturday somewhere I can get a steak,"{""time"": ""12:00"", ""party_size"": null, ""date"": ""this saturday"", ""cuisine"": ""american"", ""location"": ""psyri""}",4
+49d9b5a25827,"Hello, tapas maybe 21:15","{""time"": ""21:15"", ""party_size"": null, ""date"": null, ""cuisine"": ""spanish"", ""location"": null}",2
+b5b1992383d9,Quick one - the day after tomorrow at 8 pm a dozen of us,"{""time"": ""20:00"", ""party_size"": 12, ""date"": ""the day after tomorrow"", ""cuisine"": null, ""location"": null}",3
+0230834ab8fa,"Booking request: 7.45pm table for two small plates, lots of them in Kolonaki","{""time"": ""19:45"", ""party_size"": 2, ""date"": null, ""cuisine"": ""spanish"", ""location"": ""kolonaki""}",4
+fb9e6c289ae6,Booking request: that place that does the little dumplings next week walking distance from the hotel,"{""time"": null, ""party_size"": null, ""date"": ""next week"", ""cuisine"": ""chinese"", ""location"": ""the hotel""}",3
+cc2da3be9910,Quick one - 7.45pm this saturday,"{""time"": ""19:45"", ""party_size"": null, ""date"": ""this saturday"", ""cuisine"": null, ""location"": null}",2
+792c2875e3f3,Can you sort this out? half seven something with good mezedes party of six around Psyri,"{""time"": ""19:30"", ""party_size"": 6, ""date"": null, ""cuisine"": ""greek"", ""location"": ""psyri""}",4
+a19e82add4f6,Quick one - tapas maybe in Kolonaki party of six,"{""time"": null, ""party_size"": 6, ""date"": null, ""cuisine"": ""spanish"", ""location"": ""kolonaki""}",3
+461a550adefa,Hi! the two of us near Syntagma,"{""time"": null, ""party_size"": 2, ""date"": null, ""cuisine"": null, ""location"": ""syntagma""}",2
+9e2a88edee3d,Booking request: next week,"{""time"": null, ""party_size"": null, ""date"": ""next week"", ""cuisine"": null, ""location"": null}",1
+083be5efda01,"Hello, end of the month close to the office table for two","{""time"": null, ""party_size"": 2, ""date"": ""end of the month"", ""cuisine"": null, ""location"": ""the office""}",3
+01cb8495ed70,Booking request: 19:30 end of the month,"{""time"": ""19:30"", ""party_size"": null, ""date"": ""end of the month"", ""cuisine"": null, ""location"": null}",2
+9cadfa58d65d,Can you sort this out? for four tonight at nine,"{""time"": ""21:00"", ""party_size"": 4, ""date"": ""tonight"", ""cuisine"": null, ""location"": null}",3
+d12d53c23edf,Hi! table for two,"{""time"": null, ""party_size"": 2, ""date"": null, ""cuisine"": null, ""location"": null}",1
+2160be3ab813,"Hello, in Kolonaki raw fish, if that's an option a dozen of us","{""time"": null, ""party_size"": 12, ""date"": null, ""cuisine"": ""japanese"", ""location"": ""kolonaki""}",3
+6becdc2d282e,Hi! 21:15 next week I could murder a souvlaki,"{""time"": ""21:15"", ""party_size"": null, ""date"": ""next week"", ""cuisine"": ""greek"", ""location"": null}",3
+162657c58fe8,Somewhere I can get a steak party of six next friday at 8 pm,"{""time"": ""20:00"", ""party_size"": 6, ""date"": ""next friday"", ""cuisine"": ""american"", ""location"": null}",4
+4652040094e1,Hi! burgers a dozen of us,"{""time"": null, ""party_size"": 12, ""date"": null, ""cuisine"": ""american"", ""location"": null}",2
+9eb273e92f62,Can you sort this out? in Thiseio I could murder a souvlaki noon,"{""time"": ""12:00"", ""party_size"": null, ""date"": null, ""cuisine"": ""greek"", ""location"": ""thiseio""}",3
+0bc98df7dbf1,Booking request: half seven just me next week,"{""time"": ""19:30"", ""party_size"": 1, ""date"": ""next week"", ""cuisine"": null, ""location"": null}",3
+6be79f1144cd,Hi! at nine somewhere I can get a steak,"{""time"": ""21:00"", ""party_size"": null, ""date"": null, ""cuisine"": ""american"", ""location"": null}",2
+67d9c88c0c5b,"Hello, somewhere by the sea a week on tuesday somewhere I can get a steak for four","{""time"": null, ""party_size"": 4, ""date"": ""a week on tuesday"", ""cuisine"": ""american"", ""location"": ""the sea""}",4
+8d2b5426c7f9,Something with good mezedes just me 7.45pm,"{""time"": ""19:45"", ""party_size"": 1, ""date"": null, ""cuisine"": ""greek"", ""location"": null}",3
+c5122c78ef46,Hey there. burgers 19:30 near where we met last time the day after tomorrow,"{""time"": ""19:30"", ""party_size"": null, ""date"": ""the day after tomorrow"", ""cuisine"": ""american"", ""location"": ""where we met last time""}",4
+6b1644b809ac,"Booking request: in Kolonaki small plates, lots of them 8pm","{""time"": ""20:00"", ""party_size"": null, ""date"": null, ""cuisine"": ""spanish"", ""location"": ""kolonaki""}",3
+f129f46eeea2,21:15 we're eight in Kolonaki something with a wood-fired oven,"{""time"": ""21:15"", ""party_size"": 8, ""date"": null, ""cuisine"": ""italian"", ""location"": ""kolonaki""}",4
+e999fcabf4d7,Quick one - near where we met last time half seven the two of us the day after tomorrow,"{""time"": ""19:30"", ""party_size"": 2, ""date"": ""the day after tomorrow"", ""cuisine"": null, ""location"": ""where we met last time""}",4
+d8b7eea04186,Booking request: in Kolonaki,"{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": null, ""location"": ""kolonaki""}",1
+9fdc7e3ce4a0,Hi! that place that does the little dumplings next week 21:15 table for two,"{""time"": ""21:15"", ""party_size"": 2, ""date"": ""next week"", ""cuisine"": ""chinese"", ""location"": null}",4
+5fa6d30c9ebd,Hey there. preferably something spicy from Kerala for four 19:30 near Syntagma,"{""time"": ""19:30"", ""party_size"": 4, ""date"": null, ""cuisine"": ""indian"", ""location"": ""syntagma""}",4
+27f6377ed890,Hi! 8pm somewhere by the sea somewhere Italian,"{""time"": ""20:00"", ""party_size"": null, ""date"": null, ""cuisine"": ""italian"", ""location"": ""the sea""}",3
+0b939e0efe7c,Booking request: a dozen of us next week close to the office,"{""time"": null, ""party_size"": 12, ""date"": ""next week"", ""cuisine"": null, ""location"": ""the office""}",3
+5364b353082e,Hi! we're eight at 8 pm,"{""time"": ""20:00"", ""party_size"": 8, ""date"": null, ""cuisine"": null, ""location"": null}",2
+b17491c7e273,Booking request: burgers tonight 7.45pm in Exarchia,"{""time"": ""19:45"", ""party_size"": null, ""date"": ""tonight"", ""cuisine"": ""american"", ""location"": ""exarchia""}",4
+4019b514185c,Booking request: close to the office next week for 4,"{""time"": null, ""party_size"": 4, ""date"": ""next week"", ""cuisine"": null, ""location"": ""the office""}",3
+7784446c15fd,Booking request: tomorrow,"{""time"": null, ""party_size"": null, ""date"": ""tomorrow"", ""cuisine"": null, ""location"": null}",1
+98c74dff058e,Thanks in advance. burgers near Syntagma,"{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": ""american"", ""location"": ""syntagma""}",2
+f8e0a0e5a5ec,Can you sort this out? next friday in Exarchia I could murder a souvlaki,"{""time"": null, ""party_size"": null, ""date"": ""next friday"", ""cuisine"": ""greek"", ""location"": ""exarchia""}",3
+7753f4546e0a,"Hello, walking distance from the hotel party of six I could murder a souvlaki 19:30","{""time"": ""19:30"", ""party_size"": 6, ""date"": null, ""cuisine"": ""greek"", ""location"": ""the hotel""}",4
+74d8348e1974,"Hello, party of six 8pm anywhere that does a decent ramen","{""time"": ""20:00"", ""party_size"": 6, ""date"": null, ""cuisine"": ""japanese"", ""location"": null}",3
+ffcf5fe7464f,Quick one - tapas maybe,"{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": ""spanish"", ""location"": null}",1
+868a05c3f275,Thanks in advance. 7.45pm in Exarchia tomorrow,"{""time"": ""19:45"", ""party_size"": null, ""date"": ""tomorrow"", ""cuisine"": null, ""location"": ""exarchia""}",3
+41ab44f5c62e,Hey there. I could murder a souvlaki next friday somewhere by the sea,"{""time"": null, ""party_size"": null, ""date"": ""next friday"", ""cuisine"": ""greek"", ""location"": ""the sea""}",3
+730a1e0084db,"Can you sort this out? raw fish, if that's an option at nine close to the office","{""time"": ""21:00"", ""party_size"": null, ""date"": null, ""cuisine"": ""japanese"", ""location"": ""the office""}",3
+a80129ed76b7,Can you sort this out? party of six I could murder a souvlaki a week on tuesday,"{""time"": null, ""party_size"": 6, ""date"": ""a week on tuesday"", ""cuisine"": ""greek"", ""location"": null}",3
+e2af12b404a6,In Kolonaki something with good mezedes,"{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": ""greek"", ""location"": ""kolonaki""}",2
+01c3878ed29e,Fancy some sushi,"{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": ""japanese"", ""location"": null}",1
+83fee44bd5a6,Booking request: half seven a dozen of us fancy some sushi a week on tuesday,"{""time"": ""19:30"", ""party_size"": 12, ""date"": ""a week on tuesday"", ""cuisine"": ""japanese"", ""location"": null}",4
+80e6ad091350,Something with good mezedes next friday in Kolonaki,"{""time"": null, ""party_size"": null, ""date"": ""next friday"", ""cuisine"": ""greek"", ""location"": ""kolonaki""}",3
+67d45eb864d4,That place that does the little dumplings party of six a week on tuesday,"{""time"": null, ""party_size"": 6, ""date"": ""a week on tuesday"", ""cuisine"": ""chinese"", ""location"": null}",3
+24e2e69b89f2,"Hello, on the 14th 21:15 in Exarchia","{""time"": ""21:15"", ""party_size"": null, ""date"": ""the 14th"", ""cuisine"": null, ""location"": ""exarchia""}",3
+92c67c688e2f,Hey there. the two of us at 8 pm near where we met last time,"{""time"": ""20:00"", ""party_size"": 2, ""date"": null, ""cuisine"": null, ""location"": ""where we met last time""}",3
+86b3e3eec2f1,"Hello, on the 14th around Psyri noon","{""time"": ""12:00"", ""party_size"": null, ""date"": ""the 14th"", ""cuisine"": null, ""location"": ""psyri""}",3
+c2dafa39e8a1,In Exarchia the two of us on the 14th,"{""time"": null, ""party_size"": 2, ""date"": ""the 14th"", ""cuisine"": null, ""location"": ""exarchia""}",3
+54a542957112,Hi! 8pm this saturday for 4 around Psyri,"{""time"": ""20:00"", ""party_size"": 4, ""date"": ""this saturday"", ""cuisine"": null, ""location"": ""psyri""}",4
+582b9b1b3124,"Thanks in advance. tonight noon raw fish, if that's an option table for two","{""time"": ""12:00"", ""party_size"": 2, ""date"": ""tonight"", ""cuisine"": ""japanese"", ""location"": null}",4
+ac068d9afc3a,"Hello, party of six raw fish, if that's an option","{""time"": null, ""party_size"": 6, ""date"": null, ""cuisine"": ""japanese"", ""location"": null}",2
+14980119e115,Hi! in Kolonaki,"{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": null, ""location"": ""kolonaki""}",1
+e8fef7e8f0ab,Can you sort this out? tonight around Psyri preferably something spicy from Kerala,"{""time"": null, ""party_size"": null, ""date"": ""tonight"", ""cuisine"": ""indian"", ""location"": ""psyri""}",3
+686e42578e25,19:30 a week on tuesday craving pasta,"{""time"": ""19:30"", ""party_size"": null, ""date"": ""a week on tuesday"", ""cuisine"": ""italian"", ""location"": null}",3
+e0cb02331be2,"Hello, noon small plates, lots of them","{""time"": ""12:00"", ""party_size"": null, ""date"": null, ""cuisine"": ""spanish"", ""location"": null}",2
+4a2867a2bb2b,Booking request: at nine something with a wood-fired oven,"{""time"": ""21:00"", ""party_size"": null, ""date"": null, ""cuisine"": ""italian"", ""location"": null}",2
+ccb53883da36,Booking request: party of six somewhere Italian,"{""time"": null, ""party_size"": 6, ""date"": null, ""cuisine"": ""italian"", ""location"": null}",2
+ac2eca29fe36,Hi! tonight table for two 7.45pm,"{""time"": ""19:45"", ""party_size"": 2, ""date"": ""tonight"", ""cuisine"": null, ""location"": null}",3
+dbc5055764cd,Quick one - anywhere that does a decent ramen half seven for four near Syntagma,"{""time"": ""19:30"", ""party_size"": 4, ""date"": null, ""cuisine"": ""japanese"", ""location"": ""syntagma""}",4
+c113e8b7e771,Thanks in advance. burgers at nine for four,"{""time"": ""21:00"", ""party_size"": 4, ""date"": null, ""cuisine"": ""american"", ""location"": null}",3
+c9a4e1680b34,"Hello, we're eight","{""time"": null, ""party_size"": 8, ""date"": null, ""cuisine"": null, ""location"": null}",1
+b81707c1cea4,Table for two next week 7.45pm near where we met last time,"{""time"": ""19:45"", ""party_size"": 2, ""date"": ""next week"", ""cuisine"": null, ""location"": ""where we met last time""}",4
+af7f813b2a62,"Hey there. close to the office small plates, lots of them this saturday","{""time"": null, ""party_size"": null, ""date"": ""this saturday"", ""cuisine"": ""spanish"", ""location"": ""the office""}",3
+59121db51689,Can you sort this out? half seven,"{""time"": ""19:30"", ""party_size"": null, ""date"": null, ""cuisine"": null, ""location"": null}",1
+9c433ffd6eed,Booking request: just me next friday in Thiseio,"{""time"": null, ""party_size"": 1, ""date"": ""next friday"", ""cuisine"": null, ""location"": ""thiseio""}",3
+80e3f774a753,Quick one - at nine in Kolonaki in the mood for dim sum tonight,"{""time"": ""21:00"", ""party_size"": null, ""date"": ""tonight"", ""cuisine"": ""chinese"", ""location"": ""kolonaki""}",4
+e4f3e1b7343d,Can you sort this out? we're eight walking distance from the hotel,"{""time"": null, ""party_size"": 8, ""date"": null, ""cuisine"": null, ""location"": ""the hotel""}",2
+c5f50994ebd2,Hi! a proper curry a week on tuesday,"{""time"": null, ""party_size"": null, ""date"": ""a week on tuesday"", ""cuisine"": ""indian"", ""location"": null}",2
+40d1b95930e8,Hey there. next friday craving pasta near Syntagma,"{""time"": null, ""party_size"": null, ""date"": ""next friday"", ""cuisine"": ""italian"", ""location"": ""syntagma""}",3
+665d11ef828a,Hey there. craving pasta,"{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": ""italian"", ""location"": null}",1
+ff0068f141b7,Quick one - in Exarchia table for two somewhere I can get a steak half seven,"{""time"": ""19:30"", ""party_size"": 2, ""date"": null, ""cuisine"": ""american"", ""location"": ""exarchia""}",4
+e320fbeffedd,Something with good mezedes for 4 around Psyri,"{""time"": null, ""party_size"": 4, ""date"": null, ""cuisine"": ""greek"", ""location"": ""psyri""}",3
+9c5d80f4f469,Thanks in advance. 8pm for four in the mood for dim sum,"{""time"": ""20:00"", ""party_size"": 4, ""date"": null, ""cuisine"": ""chinese"", ""location"": null}",3
+4cc0a1c2a7cb,Thanks in advance. the day after tomorrow,"{""time"": null, ""party_size"": null, ""date"": ""the day after tomorrow"", ""cuisine"": null, ""location"": null}",1
+74d792d53fe6,Booking request: noon party of six near Syntagma,"{""time"": ""12:00"", ""party_size"": 6, ""date"": null, ""cuisine"": null, ""location"": ""syntagma""}",3
+c022d537dbba,Somewhere I can get a steak next friday 7.45pm,"{""time"": ""19:45"", ""party_size"": null, ""date"": ""next friday"", ""cuisine"": ""american"", ""location"": null}",3
+decd907d0d40,Thanks in advance. tapas maybe for 4 a week on tuesday,"{""time"": null, ""party_size"": 4, ""date"": ""a week on tuesday"", ""cuisine"": ""spanish"", ""location"": null}",3
+73458fa874b4,"Hello, table for two burgers next week at nine","{""time"": ""21:00"", ""party_size"": 2, ""date"": ""next week"", ""cuisine"": ""american"", ""location"": null}",4
+545b3dfacb2c,"Quick one - in Exarchia on the 14th raw fish, if that's an option","{""time"": null, ""party_size"": null, ""date"": ""the 14th"", ""cuisine"": ""japanese"", ""location"": ""exarchia""}",3
+b0e195be8da1,Hey there. just me preferably something spicy from Kerala near where we met last time,"{""time"": null, ""party_size"": 1, ""date"": null, ""cuisine"": ""indian"", ""location"": ""where we met last time""}",3
+bb45ffe679d7,Booking request: in Exarchia a week on tuesday a proper curry,"{""time"": null, ""party_size"": null, ""date"": ""a week on tuesday"", ""cuisine"": ""indian"", ""location"": ""exarchia""}",3
+508672108c3d,Hey there. at nine walking distance from the hotel next week a proper curry,"{""time"": ""21:00"", ""party_size"": null, ""date"": ""next week"", ""cuisine"": ""indian"", ""location"": ""the hotel""}",4
+224573c70cbd,"Hello, close to the office a dozen of us tomorrow","{""time"": null, ""party_size"": 12, ""date"": ""tomorrow"", ""cuisine"": null, ""location"": ""the office""}",3
+1c42d4750f4d,Booking request: table for two end of the month,"{""time"": null, ""party_size"": 2, ""date"": ""end of the month"", ""cuisine"": null, ""location"": null}",2
+ceb8a413ed50,Can you sort this out? at 8 pm this saturday,"{""time"": ""20:00"", ""party_size"": null, ""date"": ""this saturday"", ""cuisine"": null, ""location"": null}",2
+a2b92b2a1a99,Can you sort this out? for 4 somewhere by the sea next friday tapas maybe,"{""time"": null, ""party_size"": 4, ""date"": ""next friday"", ""cuisine"": ""spanish"", ""location"": ""the sea""}",4
+f2999e6e9ebb,Hey there. this saturday,"{""time"": null, ""party_size"": null, ""date"": ""this saturday"", ""cuisine"": null, ""location"": null}",1
+5a9ccf79e04f,Thanks in advance. party of six next week walking distance from the hotel half seven,"{""time"": ""19:30"", ""party_size"": 6, ""date"": ""next week"", ""cuisine"": null, ""location"": ""the hotel""}",4
+78d7661aebdd,Hi! close to the office,"{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": null, ""location"": ""the office""}",1
+2f83f0dfb04c,We're eight end of the month close to the office,"{""time"": null, ""party_size"": 8, ""date"": ""end of the month"", ""cuisine"": null, ""location"": ""the office""}",3
+252adb82e460,Can you sort this out? somewhere by the sea next week noon for four,"{""time"": ""12:00"", ""party_size"": 4, ""date"": ""next week"", ""cuisine"": null, ""location"": ""the sea""}",4
+0ede986fc0bb,"Hello, noon for four","{""time"": ""12:00"", ""party_size"": 4, ""date"": null, ""cuisine"": null, ""location"": null}",2
+f17c4fdb6885,Quick one - that place that does the little dumplings 19:30 a dozen of us,"{""time"": ""19:30"", ""party_size"": 12, ""date"": null, ""cuisine"": ""chinese"", ""location"": null}",3
+3a5eb3aaf2ab,Booking request: tonight walking distance from the hotel table for two half seven,"{""time"": ""19:30"", ""party_size"": 2, ""date"": ""tonight"", ""cuisine"": null, ""location"": ""the hotel""}",4
+a2ee7520ebf0,Near Syntagma something with good mezedes,"{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": ""greek"", ""location"": ""syntagma""}",2
+5f3b64c569d0,Thanks in advance. for 4 anywhere that does a decent ramen 19:30,"{""time"": ""19:30"", ""party_size"": 4, ""date"": null, ""cuisine"": ""japanese"", ""location"": null}",3
+c2e378fd9c15,Quick one - close to the office,"{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": null, ""location"": ""the office""}",1
+841db0de1775,Quick one - for four somewhere Italian in Thiseio this saturday,"{""time"": null, ""party_size"": 4, ""date"": ""this saturday"", ""cuisine"": ""italian"", ""location"": ""thiseio""}",4
+91eb11b042ce,8pm we're eight around Psyri next week,"{""time"": ""20:00"", ""party_size"": 8, ""date"": ""next week"", ""cuisine"": null, ""location"": ""psyri""}",4
+808f6a9faedd,Hi! in the mood for dim sum on the 14th,"{""time"": null, ""party_size"": null, ""date"": ""the 14th"", ""cuisine"": ""chinese"", ""location"": null}",2
+f57b1990b499,Thanks in advance. the day after tomorrow tapas maybe noon,"{""time"": ""12:00"", ""party_size"": null, ""date"": ""the day after tomorrow"", ""cuisine"": ""spanish"", ""location"": null}",3
+248a09fea427,Quick one - tapas maybe close to the office,"{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": ""spanish"", ""location"": ""the office""}",2
+b700a0e8d091,Hey there. close to the office end of the month half seven a dozen of us,"{""time"": ""19:30"", ""party_size"": 12, ""date"": ""end of the month"", ""cuisine"": null, ""location"": ""the office""}",4
+96a40d223d92,Can you sort this out? next friday party of six,"{""time"": null, ""party_size"": 6, ""date"": ""next friday"", ""cuisine"": null, ""location"": null}",2
+c197c481c353,Hey there. craving pasta the two of us,"{""time"": null, ""party_size"": 2, ""date"": null, ""cuisine"": ""italian"", ""location"": null}",2
+da0d2761972a,"Hello, just me in Thiseio small plates, lots of them","{""time"": null, ""party_size"": 1, ""date"": null, ""cuisine"": ""spanish"", ""location"": ""thiseio""}",3
+07bb67fc96e4,This saturday anywhere that does a decent ramen at nine,"{""time"": ""21:00"", ""party_size"": null, ""date"": ""this saturday"", ""cuisine"": ""japanese"", ""location"": null}",3
+decce87fa8a5,Booking request: the day after tomorrow at 8 pm party of six walking distance from the hotel,"{""time"": ""20:00"", ""party_size"": 6, ""date"": ""the day after tomorrow"", ""cuisine"": null, ""location"": ""the hotel""}",4
+36c72735ccf9,Hi! just me next friday in Exarchia noon,"{""time"": ""12:00"", ""party_size"": 1, ""date"": ""next friday"", ""cuisine"": null, ""location"": ""exarchia""}",4
+5d836fce7cf7,Thanks in advance. 7.45pm the two of us around Psyri,"{""time"": ""19:45"", ""party_size"": 2, ""date"": null, ""cuisine"": null, ""location"": ""psyri""}",3
+85f059c8a327,Hi! table for two next week 8pm close to the office,"{""time"": ""20:00"", ""party_size"": 2, ""date"": ""next week"", ""cuisine"": null, ""location"": ""the office""}",4
+491904af8c39,Can you sort this out? near Syntagma on the 14th at 8 pm craving pasta,"{""time"": ""20:00"", ""party_size"": null, ""date"": ""the 14th"", ""cuisine"": ""italian"", ""location"": ""syntagma""}",4
+04978d6dc11f,Thanks in advance. I could murder a souvlaki near Syntagma we're eight at 8 pm,"{""time"": ""20:00"", ""party_size"": 8, ""date"": null, ""cuisine"": ""greek"", ""location"": ""syntagma""}",4
+ee88491bbf5e,"Hello, somewhere I can get a steak at nine","{""time"": ""21:00"", ""party_size"": null, ""date"": null, ""cuisine"": ""american"", ""location"": null}",2
+9cba5e7a5c25,In the mood for dim sum tomorrow table for two at 8 pm,"{""time"": ""20:00"", ""party_size"": 2, ""date"": ""tomorrow"", ""cuisine"": ""chinese"", ""location"": null}",4
+23d2799ddf81,Hi! 21:15 in Kolonaki we're eight next week,"{""time"": ""21:15"", ""party_size"": 8, ""date"": ""next week"", ""cuisine"": null, ""location"": ""kolonaki""}",4
+160696acdb74,Hi! burgers just me in Kolonaki on the 14th,"{""time"": null, ""party_size"": 1, ""date"": ""the 14th"", ""cuisine"": ""american"", ""location"": ""kolonaki""}",4
+c740f48fb836,"Hello, the day after tomorrow party of six","{""time"": null, ""party_size"": 6, ""date"": ""the day after tomorrow"", ""cuisine"": null, ""location"": null}",2
+9d3c159ab0d9,Booking request: near Syntagma craving pasta,"{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": ""italian"", ""location"": ""syntagma""}",2
+37dd5b646ee8,Can you sort this out? around Psyri something with a wood-fired oven on the 14th,"{""time"": null, ""party_size"": null, ""date"": ""the 14th"", ""cuisine"": ""italian"", ""location"": ""psyri""}",3
+94db736b2e2f,Walking distance from the hotel table for two 21:15,"{""time"": ""21:15"", ""party_size"": 2, ""date"": null, ""cuisine"": null, ""location"": ""the hotel""}",3
+5e33d15a552c,Thanks in advance. at nine preferably something spicy from Kerala somewhere by the sea,"{""time"": ""21:00"", ""party_size"": null, ""date"": null, ""cuisine"": ""indian"", ""location"": ""the sea""}",3
+284c7ee385f1,Quick one - 21:15 for four,"{""time"": ""21:15"", ""party_size"": 4, ""date"": null, ""cuisine"": null, ""location"": null}",2
+2c10e3709239,Hi! near where we met last time,"{""time"": null, ""party_size"": null, ""date"": null, ""cuisine"": null, ""location"": ""where we met last time""}",1
+d910bff10140,"Hello, tonight we're eight close to the office at 8 pm","{""time"": ""20:00"", ""party_size"": 8, ""date"": ""tonight"", ""cuisine"": null, ""location"": ""the office""}",4
+660f962dddc7,Thanks in advance. end of the month we're eight something with a wood-fired oven in Exarchia,"{""time"": null, ""party_size"": 8, ""date"": ""end of the month"", ""cuisine"": ""italian"", ""location"": ""exarchia""}",4
+fd428e526557,Hey there. a week on tuesday in Exarchia somewhere I can get a steak we're eight,"{""time"": null, ""party_size"": 8, ""date"": ""a week on tuesday"", ""cuisine"": ""american"", ""location"": ""exarchia""}",4
+05757209fa4d,Hey there. burgers near Syntagma noon next friday,"{""time"": ""12:00"", ""party_size"": null, ""date"": ""next friday"", ""cuisine"": ""american"", ""location"": ""syntagma""}",4
+532bb8e7acbb,"Hello, next friday for four near Syntagma noon","{""time"": ""12:00"", ""party_size"": 4, ""date"": ""next friday"", ""cuisine"": null, ""location"": ""syntagma""}",4
+d79ce05575b2,"Hello, for four 19:30 somewhere by the sea that place that does the little dumplings","{""time"": ""19:30"", ""party_size"": 4, ""date"": null, ""cuisine"": ""chinese"", ""location"": ""the sea""}",4
+96084bce4925,Hey there. that place that does the little dumplings table for two 19:30 near Syntagma,"{""time"": ""19:30"", ""party_size"": 2, ""date"": null, ""cuisine"": ""chinese"", ""location"": ""syntagma""}",4
+da32d9887fe2,Hey there. somewhere Italian table for two in Thiseio,"{""time"": null, ""party_size"": 2, ""date"": null, ""cuisine"": ""italian"", ""location"": ""thiseio""}",3
+3ccf94ff1503,Quick one - 19:30 just me next friday,"{""time"": ""19:30"", ""party_size"": 1, ""date"": ""next friday"", ""cuisine"": null, ""location"": null}",3
+82a4aea52cae,At nine a proper curry for 4 walking distance from the hotel,"{""time"": ""21:00"", ""party_size"": 4, ""date"": null, ""cuisine"": ""indian"", ""location"": ""the hotel""}",4
+68c39f532607,Hi! anywhere that does a decent ramen end of the month 8pm party of six,"{""time"": ""20:00"", ""party_size"": 6, ""date"": ""end of the month"", ""cuisine"": ""japanese"", ""location"": null}",4
+7ef2e3b5e6b9,Hey there. we're eight 19:30 preferably something spicy from Kerala,"{""time"": ""19:30"", ""party_size"": 8, ""date"": null, ""cuisine"": ""indian"", ""location"": null}",3
+f24bbe2f5c3d,Party of six at nine,"{""time"": ""21:00"", ""party_size"": 6, ""date"": null, ""cuisine"": null, ""location"": null}",2
+a8e50a38910c,Hey there. at 8 pm the two of us this saturday,"{""time"": ""20:00"", ""party_size"": 2, ""date"": ""this saturday"", ""cuisine"": null, ""location"": null}",3

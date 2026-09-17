@@ -1,0 +1,39 @@
+{
+  "arm": "llm:openai:gpt-5.4-mini",
+  "n": 200,
+  "errors": 0,
+  "malformed": 0,
+  "fields": {
+    "time": {
+      "accuracy": 0.9915966386554622,
+      "invention": 0.012345679012345678,
+      "n_present": 119,
+      "n_absent": 81
+    },
+    "party_size": {
+      "accuracy": 0.9916666666666667,
+      "invention": 0.0,
+      "n_present": 120,
+      "n_absent": 80
+    },
+    "date": {
+      "accuracy": 0.9823008849557522,
+      "invention": 0.011494252873563218,
+      "n_present": 113,
+      "n_absent": 87
+    },
+    "cuisine": {
+      "accuracy": 0.8907563025210085,
+      "invention": 0.0,
+      "n_present": 119,
+      "n_absent": 81
+    },
+    "location": {
+      "accuracy": 0.7704918032786885,
+      "invention": 0.0641025641025641,
+      "n_present": 122,
+      "n_absent": 78
+    }
+  },
+  "invention_overall": 0.0171990171990172
+}

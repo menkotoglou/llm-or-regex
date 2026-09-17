@@ -7,6 +7,7 @@
 #   make dryrun           every module with a fake LLM arm: no network, no money
 #   make local            experiments 1-3 for regex + apc + own (no API cost)
 #   make obfuscation      experiment 7
+#   make extraction       slide 16: field extraction + invention rate   <- spends money
 #   make identity         experiment 9
 #   make llm              experiments 1-4 for the LLM arms          <- spends money
 #   make handlabeled      the LLM arms on the hand-labelled sets     <- spends money
@@ -65,6 +66,10 @@ handlabeled:
 	$(PY) scripts/obfuscation_table.py
 	$(PY) scripts/identity_table.py
 
+extraction:
+	$(PY) scripts/make_extraction.py
+	$(PY) -m bench.extract $(call arm_flags,regex $(LLM_ARMS)) --workers 6
+
 cost:
 	$(PY) -m bench.cost --sample natural-2k $(call arm_flags,$(ALL_ARMS))
 
@@ -82,4 +87,4 @@ dryrun:
 	$(PY) -m bench.determinism --sample balanced-2k --arm llm:fake:any --n 100 --runs 3
 	$(PY) -m bench.report --arm regex --arm apc --arm llm:fake:any --samples balanced-2k
 
-.PHONY: setup wordlist samples local obfuscation identity llm handlabeled cost cascade report dryrun
+.PHONY: setup wordlist samples local obfuscation identity extraction llm handlabeled cost cascade report dryrun
