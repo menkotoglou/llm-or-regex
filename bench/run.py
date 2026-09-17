@@ -45,7 +45,8 @@ def run_arm(sample: str, arm_spec: str, run: int, n: int | None, workers: int, q
         df = df.head(n)
     out = result_path(sample, arm_spec, run)
     out.parent.mkdir(parents=True, exist_ok=True)
-    done = load_results(out)
+    # An errored row is not a result: keep it as evidence, but retry the item on the next run.
+    done = {k: v for k, v in load_results(out).items() if v.get("error") is None}
     todo = [r for r in df.itertuples(index=False) if r.id not in done]
     if not todo:
         if not quiet:

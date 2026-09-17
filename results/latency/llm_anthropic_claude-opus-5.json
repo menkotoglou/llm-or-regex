@@ -1,0 +1,23 @@
+{
+  "arm": "llm:anthropic:claude-opus-5",
+  "sample": "balanced-2k",
+  "n": 200,
+  "warmup": 50,
+  "errors": 0,
+  "latency_ms": {
+    "n": 200,
+    "p50": 1818.8696670113131,
+    "p95": 2785.069542005658,
+    "p99": 3608.2065000082366,
+    "mean": 1833.2472461051657,
+    "max": 5555.7568749645725
+  },
+  "retries_total": 0,
+  "sequential_items_per_s": 0.5454628503119153,
+  "machine": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.3",
+    "cpu": "arm"
+  },
+  "measured_at": "2026-09-17 00:33 EEST"
+}

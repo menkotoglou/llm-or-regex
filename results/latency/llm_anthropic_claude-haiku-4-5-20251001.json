@@ -1,0 +1,23 @@
+{
+  "arm": "llm:anthropic:claude-haiku-4-5-20251001",
+  "sample": "balanced-2k",
+  "n": 200,
+  "warmup": 50,
+  "errors": 0,
+  "latency_ms": {
+    "n": 200,
+    "p50": 676.0166250169277,
+    "p95": 930.5803750175983,
+    "p99": 1667.3739169491455,
+    "mean": 711.3730129445321,
+    "max": 2704.326040984597
+  },
+  "retries_total": 0,
+  "sequential_items_per_s": 1.4056295409786204,
+  "machine": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.3",
+    "cpu": "arm"
+  },
+  "measured_at": "2026-09-17 00:26 EEST"
+}

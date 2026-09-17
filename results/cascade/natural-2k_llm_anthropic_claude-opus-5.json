@@ -1,0 +1,481 @@
+{
+  "sample": "natural-2k",
+  "llm": "llm:anthropic:claude-opus-5",
+  "router": "own:train-4k",
+  "n": 2000,
+  "policy": "open",
+  "cost_llm_eur_per_1m": null,
+  "cost_router_eur_per_1m": null,
+  "baselines": {
+    "regex": {
+      "n": 2000,
+      "tp": 18,
+      "fp": 48,
+      "fn": 139,
+      "tn": 1795,
+      "accuracy": 0.9065,
+      "precision": 0.2727272727272727,
+      "recall": 0.11464968152866242,
+      "f1": 0.16143497757847536,
+      "malformed": 0,
+      "errors": 0,
+      "dropped": 0,
+      "malformed_rate": 0.0,
+      "policy": "open"
+    },
+    "own:train-4k": {
+      "n": 2000,
+      "tp": 120,
+      "fp": 383,
+      "fn": 37,
+      "tn": 1460,
+      "accuracy": 0.79,
+      "precision": 0.23856858846918488,
+      "recall": 0.7643312101910829,
+      "f1": 0.36363636363636365,
+      "malformed": 0,
+      "errors": 0,
+      "dropped": 0,
+      "malformed_rate": 0.0,
+      "policy": "open"
+    },
+    "llm:anthropic:claude-opus-5": {
+      "n": 2000,
+      "tp": 101,
+      "fp": 175,
+      "fn": 56,
+      "tn": 1668,
+      "accuracy": 0.8845,
+      "precision": 0.36594202898550726,
+      "recall": 0.643312101910828,
+      "f1": 0.46651270207852197,
+      "malformed": 0,
+      "errors": 0,
+      "dropped": 0,
+      "malformed_rate": 0.0,
+      "policy": "open"
+    }
+  },
+  "grid": [
+    {
+      "lo": 0.02,
+      "hi": 0.7,
+      "share_to_llm": 0.869,
+      "routes": {
+        "regex": 66,
+        "router": 196,
+        "llm": 1738
+      },
+      "precision": 0.2900232018561485,
+      "recall": 0.7961783439490446,
+      "f1": 0.42517006802721097,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.02,
+      "hi": 0.8,
+      "share_to_llm": 0.9185,
+      "routes": {
+        "regex": 66,
+        "router": 97,
+        "llm": 1837
+      },
+      "precision": 0.3241758241758242,
+      "recall": 0.7515923566878981,
+      "f1": 0.45297504798464494,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.02,
+      "hi": 0.9,
+      "share_to_llm": 0.945,
+      "routes": {
+        "regex": 66,
+        "router": 44,
+        "llm": 1890
+      },
+      "precision": 0.3343195266272189,
+      "recall": 0.7197452229299363,
+      "f1": 0.45656565656565656,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.02,
+      "hi": 0.95,
+      "share_to_llm": 0.9585,
+      "routes": {
+        "regex": 66,
+        "router": 17,
+        "llm": 1917
+      },
+      "precision": 0.3394495412844037,
+      "recall": 0.7070063694267515,
+      "f1": 0.4586776859504132,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.02,
+      "hi": 0.99,
+      "share_to_llm": 0.9655,
+      "routes": {
+        "regex": 66,
+        "router": 3,
+        "llm": 1931
+      },
+      "precision": 0.33540372670807456,
+      "recall": 0.6878980891719745,
+      "f1": 0.4509394572025052,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.05,
+      "hi": 0.7,
+      "share_to_llm": 0.85,
+      "routes": {
+        "regex": 66,
+        "router": 234,
+        "llm": 1700
+      },
+      "precision": 0.2900232018561485,
+      "recall": 0.7961783439490446,
+      "f1": 0.42517006802721097,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.05,
+      "hi": 0.8,
+      "share_to_llm": 0.8995,
+      "routes": {
+        "regex": 66,
+        "router": 135,
+        "llm": 1799
+      },
+      "precision": 0.3241758241758242,
+      "recall": 0.7515923566878981,
+      "f1": 0.45297504798464494,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.05,
+      "hi": 0.9,
+      "share_to_llm": 0.926,
+      "routes": {
+        "regex": 66,
+        "router": 82,
+        "llm": 1852
+      },
+      "precision": 0.3343195266272189,
+      "recall": 0.7197452229299363,
+      "f1": 0.45656565656565656,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.05,
+      "hi": 0.95,
+      "share_to_llm": 0.9395,
+      "routes": {
+        "regex": 66,
+        "router": 55,
+        "llm": 1879
+      },
+      "precision": 0.3394495412844037,
+      "recall": 0.7070063694267515,
+      "f1": 0.4586776859504132,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.05,
+      "hi": 0.99,
+      "share_to_llm": 0.9465,
+      "routes": {
+        "regex": 66,
+        "router": 41,
+        "llm": 1893
+      },
+      "precision": 0.33540372670807456,
+      "recall": 0.6878980891719745,
+      "f1": 0.4509394572025052,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.1,
+      "hi": 0.7,
+      "share_to_llm": 0.7845,
+      "routes": {
+        "regex": 66,
+        "router": 365,
+        "llm": 1569
+      },
+      "precision": 0.2927400468384075,
+      "recall": 0.7961783439490446,
+      "f1": 0.42808219178082185,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.1,
+      "hi": 0.8,
+      "share_to_llm": 0.834,
+      "routes": {
+        "regex": 66,
+        "router": 266,
+        "llm": 1668
+      },
+      "precision": 0.3277777777777778,
+      "recall": 0.7515923566878981,
+      "f1": 0.45647969052224374,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.1,
+      "hi": 0.9,
+      "share_to_llm": 0.8605,
+      "routes": {
+        "regex": 66,
+        "router": 213,
+        "llm": 1721
+      },
+      "precision": 0.3383233532934132,
+      "recall": 0.7197452229299363,
+      "f1": 0.46028513238289204,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.1,
+      "hi": 0.95,
+      "share_to_llm": 0.874,
+      "routes": {
+        "regex": 66,
+        "router": 186,
+        "llm": 1748
+      },
+      "precision": 0.34365325077399383,
+      "recall": 0.7070063694267515,
+      "f1": 0.46249999999999997,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.1,
+      "hi": 0.99,
+      "share_to_llm": 0.881,
+      "routes": {
+        "regex": 66,
+        "router": 172,
+        "llm": 1762
+      },
+      "precision": 0.33962264150943394,
+      "recall": 0.6878980891719745,
+      "f1": 0.4547368421052631,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.15,
+      "hi": 0.7,
+      "share_to_llm": 0.696,
+      "routes": {
+        "regex": 66,
+        "router": 542,
+        "llm": 1392
+      },
+      "precision": 0.2997601918465228,
+      "recall": 0.7961783439490446,
+      "f1": 0.43554006968641124,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.15,
+      "hi": 0.8,
+      "share_to_llm": 0.7455,
+      "routes": {
+        "regex": 66,
+        "router": 443,
+        "llm": 1491
+      },
+      "precision": 0.33714285714285713,
+      "recall": 0.7515923566878981,
+      "f1": 0.46548323471400394,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.15,
+      "hi": 0.9,
+      "share_to_llm": 0.772,
+      "routes": {
+        "regex": 66,
+        "router": 390,
+        "llm": 1544
+      },
+      "precision": 0.3487654320987654,
+      "recall": 0.7197452229299363,
+      "f1": 0.4698544698544698,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.15,
+      "hi": 0.95,
+      "share_to_llm": 0.7855,
+      "routes": {
+        "regex": 66,
+        "router": 363,
+        "llm": 1571
+      },
+      "precision": 0.3546325878594249,
+      "recall": 0.7070063694267515,
+      "f1": 0.47234042553191485,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.15,
+      "hi": 0.99,
+      "share_to_llm": 0.7925,
+      "routes": {
+        "regex": 66,
+        "router": 349,
+        "llm": 1585
+      },
+      "precision": 0.35064935064935066,
+      "recall": 0.6878980891719745,
+      "f1": 0.4645161290322581,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.2,
+      "hi": 0.7,
+      "share_to_llm": 0.589,
+      "routes": {
+        "regex": 66,
+        "router": 756,
+        "llm": 1178
+      },
+      "precision": 0.3069306930693069,
+      "recall": 0.7898089171974523,
+      "f1": 0.44206773618538325,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.2,
+      "hi": 0.8,
+      "share_to_llm": 0.6385,
+      "routes": {
+        "regex": 66,
+        "router": 657,
+        "llm": 1277
+      },
+      "precision": 0.34718100890207715,
+      "recall": 0.7452229299363057,
+      "f1": 0.47368421052631576,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.2,
+      "hi": 0.9,
+      "share_to_llm": 0.665,
+      "routes": {
+        "regex": 66,
+        "router": 604,
+        "llm": 1330
+      },
+      "precision": 0.36012861736334406,
+      "recall": 0.7133757961783439,
+      "f1": 0.47863247863247865,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.2,
+      "hi": 0.95,
+      "share_to_llm": 0.6785,
+      "routes": {
+        "regex": 66,
+        "router": 577,
+        "llm": 1357
+      },
+      "precision": 0.36666666666666664,
+      "recall": 0.7006369426751592,
+      "f1": 0.48140043763676144,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.2,
+      "hi": 0.99,
+      "share_to_llm": 0.6855,
+      "routes": {
+        "regex": 66,
+        "router": 563,
+        "llm": 1371
+      },
+      "precision": 0.36271186440677966,
+      "recall": 0.6815286624203821,
+      "f1": 0.47345132743362833,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.3,
+      "hi": 0.7,
+      "share_to_llm": 0.396,
+      "routes": {
+        "regex": 66,
+        "router": 1142,
+        "llm": 792
+      },
+      "precision": 0.31070496083550914,
+      "recall": 0.7579617834394905,
+      "f1": 0.4407407407407407,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.3,
+      "hi": 0.8,
+      "share_to_llm": 0.4455,
+      "routes": {
+        "regex": 66,
+        "router": 1043,
+        "llm": 891
+      },
+      "precision": 0.35443037974683544,
+      "recall": 0.7133757961783439,
+      "f1": 0.47357293868921774,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.3,
+      "hi": 0.9,
+      "share_to_llm": 0.472,
+      "routes": {
+        "regex": 66,
+        "router": 990,
+        "llm": 944
+      },
+      "precision": 0.3689655172413793,
+      "recall": 0.6815286624203821,
+      "f1": 0.4787472035794183,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.3,
+      "hi": 0.95,
+      "share_to_llm": 0.4855,
+      "routes": {
+        "regex": 66,
+        "router": 963,
+        "llm": 971
+      },
+      "precision": 0.3763440860215054,
+      "recall": 0.6687898089171974,
+      "f1": 0.481651376146789,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.3,
+      "hi": 0.99,
+      "share_to_llm": 0.4925,
+      "routes": {
+        "regex": 66,
+        "router": 949,
+        "llm": 985
+      },
+      "precision": 0.3722627737226277,
+      "recall": 0.6496815286624203,
+      "f1": 0.4733178654292343,
+      "eur_per_1m": null
+    }
+  ]
+}

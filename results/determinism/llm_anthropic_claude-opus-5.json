@@ -1,0 +1,58 @@
+{
+  "arm": "llm:anthropic:claude-opus-5",
+  "sample": "balanced-2k",
+  "runs": 3,
+  "n": 200,
+  "disagreeing_items": 3,
+  "disagreement_rate": 0.015,
+  "items_with_malformed": 0,
+  "malformed_item_rate": 0.0,
+  "flip_direction": {
+    "clean->mixed": 2,
+    "toxic->mixed": 1
+  },
+  "examples": [
+    {
+      "item_id": "348f81f8ab75",
+      "label": 1,
+      "preds": [
+        0,
+        1,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": false}",
+        "{\"toxic\": true}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "5eb24db54f7a",
+      "label": 1,
+      "preds": [
+        0,
+        1,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": false}",
+        "{\"toxic\": true}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "6fa19594ee2a",
+      "label": 0,
+      "preds": [
+        1,
+        1,
+        0
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": true}",
+        "{\"toxic\": false}"
+      ]
+    }
+  ]
+}

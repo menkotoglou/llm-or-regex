@@ -1,0 +1,156 @@
+{
+  "arm": "llm:anthropic:claude-haiku-4-5-20251001",
+  "sample": "balanced-2k",
+  "runs": 3,
+  "n": 200,
+  "disagreeing_items": 13,
+  "disagreement_rate": 0.065,
+  "items_with_malformed": 0,
+  "malformed_item_rate": 0.0,
+  "flip_direction": {
+    "clean->mixed": 7,
+    "toxic->mixed": 6
+  },
+  "examples": [
+    {
+      "item_id": "6c85212b71db",
+      "label": 0,
+      "preds": [
+        0,
+        1,
+        0
+      ],
+      "raws": [
+        "```json\n{\"toxic\": false}\n```\n\nThis comment, while potentially controversial in i",
+        "{\"toxic\": true}",
+        "{\"toxic\": false}"
+      ]
+    },
+    {
+      "item_id": "827757fc0fee",
+      "label": 1,
+      "preds": [
+        1,
+        1,
+        0
+      ],
+      "raws": [
+        "{\"toxic\": true}\n\nThis comment contains dehumanizing language (\"short-sighted and",
+        "{\"toxic\": true}\n\nThe comment uses dehumanizing language (\"short-sighted and igno",
+        "{\"toxic\": false}\n\nThe comment expresses strong criticism and disagreement with A"
+      ]
+    },
+    {
+      "item_id": "8e69c64757b8",
+      "label": 1,
+      "preds": [
+        1,
+        1,
+        0
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": true}",
+        "{\"toxic\": false}"
+      ]
+    },
+    {
+      "item_id": "a96c65d044af",
+      "label": 1,
+      "preds": [
+        0,
+        0,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": false}\n\nThe comment expresses strong disagreement and criticism using ",
+        "{\"toxic\": false}\n\nThe comment expresses strong disagreement and criticism, but i",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "4aea01e644c4",
+      "label": 1,
+      "preds": [
+        0,
+        0,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": false}",
+        "{\"toxic\": false}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "8148136a9b97",
+      "label": 1,
+      "preds": [
+        0,
+        0,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": false}\n\nThe comment expresses strong criticism and disagreement with c",
+        "{\"toxic\": false}",
+        "{\"toxic\": true}"
+      ]
+    },
+    {
+      "item_id": "185d094ffcf1",
+      "label": 1,
+      "preds": [
+        1,
+        0,
+        0
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "{\"toxic\": false}",
+        "{\"toxic\": false}"
+      ]
+    },
+    {
+      "item_id": "3b661a15baa4",
+      "label": 1,
+      "preds": [
+        1,
+        0,
+        1
+      ],
+      "raws": [
+        "{\"toxic\": true}\n\nThis comment is toxic because it uses inflammatory language (\"P",
+        "{\"toxic\": false}\n\nThis comment expresses a strong, critical opinion about law en",
+        "{\"toxic\": true}\n\nThis comment is toxic because it uses dehumanizing language (\"P"
+      ]
+    },
+    {
+      "item_id": "57b93d39aa0f",
+      "label": 0,
+      "preds": [
+        1,
+        0,
+        1
+      ],
+      "raws": [
+        "```json\n{\"toxic\": true}\n```\n\nThis comment, while framed as a historical argument",
+        "{\"toxic\": false}\n\nThis comment expresses a strong political opinion with histori",
+        "{\"toxic\": true}\n\nThis comment is toxic because it:\n1. Makes sweeping generalizat"
+      ]
+    },
+    {
+      "item_id": "c532fae45ff3",
+      "label": 0,
+      "preds": [
+        1,
+        0,
+        0
+      ],
+      "raws": [
+        "{\"toxic\": true}",
+        "```json\n{\"toxic\": false}\n```\n\nThis comment expresses disagreement and criticism ",
+        "{\"toxic\": false}"
+      ]
+    }
+  ]
+}

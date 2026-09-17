@@ -1,0 +1,481 @@
+{
+  "sample": "natural-2k",
+  "llm": "llm:anthropic:claude-haiku-4-5-20251001",
+  "router": "own:train-4k",
+  "n": 2000,
+  "policy": "open",
+  "cost_llm_eur_per_1m": null,
+  "cost_router_eur_per_1m": null,
+  "baselines": {
+    "regex": {
+      "n": 2000,
+      "tp": 18,
+      "fp": 48,
+      "fn": 139,
+      "tn": 1795,
+      "accuracy": 0.9065,
+      "precision": 0.2727272727272727,
+      "recall": 0.11464968152866242,
+      "f1": 0.16143497757847536,
+      "malformed": 0,
+      "errors": 0,
+      "dropped": 0,
+      "malformed_rate": 0.0,
+      "policy": "open"
+    },
+    "own:train-4k": {
+      "n": 2000,
+      "tp": 120,
+      "fp": 383,
+      "fn": 37,
+      "tn": 1460,
+      "accuracy": 0.79,
+      "precision": 0.23856858846918488,
+      "recall": 0.7643312101910829,
+      "f1": 0.36363636363636365,
+      "malformed": 0,
+      "errors": 0,
+      "dropped": 0,
+      "malformed_rate": 0.0,
+      "policy": "open"
+    },
+    "llm:anthropic:claude-haiku-4-5-20251001": {
+      "n": 2000,
+      "tp": 82,
+      "fp": 128,
+      "fn": 75,
+      "tn": 1715,
+      "accuracy": 0.8985,
+      "precision": 0.3904761904761905,
+      "recall": 0.5222929936305732,
+      "f1": 0.44686648501362397,
+      "malformed": 0,
+      "errors": 0,
+      "dropped": 0,
+      "malformed_rate": 0.0,
+      "policy": "open"
+    }
+  },
+  "grid": [
+    {
+      "lo": 0.02,
+      "hi": 0.7,
+      "share_to_llm": 0.869,
+      "routes": {
+        "regex": 66,
+        "router": 196,
+        "llm": 1738
+      },
+      "precision": 0.3229166666666667,
+      "recall": 0.7898089171974523,
+      "f1": 0.4584103512014787,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.02,
+      "hi": 0.8,
+      "share_to_llm": 0.9185,
+      "routes": {
+        "regex": 66,
+        "router": 97,
+        "llm": 1837
+      },
+      "precision": 0.3546325878594249,
+      "recall": 0.7070063694267515,
+      "f1": 0.47234042553191485,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.02,
+      "hi": 0.9,
+      "share_to_llm": 0.945,
+      "routes": {
+        "regex": 66,
+        "router": 44,
+        "llm": 1890
+      },
+      "precision": 0.3665480427046263,
+      "recall": 0.6560509554140127,
+      "f1": 0.4703196347031964,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.02,
+      "hi": 0.95,
+      "share_to_llm": 0.9585,
+      "routes": {
+        "regex": 66,
+        "router": 17,
+        "llm": 1917
+      },
+      "precision": 0.35984848484848486,
+      "recall": 0.6050955414012739,
+      "f1": 0.4513064133016627,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.02,
+      "hi": 0.99,
+      "share_to_llm": 0.9655,
+      "routes": {
+        "regex": 66,
+        "router": 3,
+        "llm": 1931
+      },
+      "precision": 0.34765625,
+      "recall": 0.5668789808917197,
+      "f1": 0.43099273607748184,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.05,
+      "hi": 0.7,
+      "share_to_llm": 0.85,
+      "routes": {
+        "regex": 66,
+        "router": 234,
+        "llm": 1700
+      },
+      "precision": 0.3229166666666667,
+      "recall": 0.7898089171974523,
+      "f1": 0.4584103512014787,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.05,
+      "hi": 0.8,
+      "share_to_llm": 0.8995,
+      "routes": {
+        "regex": 66,
+        "router": 135,
+        "llm": 1799
+      },
+      "precision": 0.3546325878594249,
+      "recall": 0.7070063694267515,
+      "f1": 0.47234042553191485,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.05,
+      "hi": 0.9,
+      "share_to_llm": 0.926,
+      "routes": {
+        "regex": 66,
+        "router": 82,
+        "llm": 1852
+      },
+      "precision": 0.3665480427046263,
+      "recall": 0.6560509554140127,
+      "f1": 0.4703196347031964,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.05,
+      "hi": 0.95,
+      "share_to_llm": 0.9395,
+      "routes": {
+        "regex": 66,
+        "router": 55,
+        "llm": 1879
+      },
+      "precision": 0.35984848484848486,
+      "recall": 0.6050955414012739,
+      "f1": 0.4513064133016627,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.05,
+      "hi": 0.99,
+      "share_to_llm": 0.9465,
+      "routes": {
+        "regex": 66,
+        "router": 41,
+        "llm": 1893
+      },
+      "precision": 0.34765625,
+      "recall": 0.5668789808917197,
+      "f1": 0.43099273607748184,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.1,
+      "hi": 0.7,
+      "share_to_llm": 0.7845,
+      "routes": {
+        "regex": 66,
+        "router": 365,
+        "llm": 1569
+      },
+      "precision": 0.3237597911227154,
+      "recall": 0.7898089171974523,
+      "f1": 0.45925925925925926,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.1,
+      "hi": 0.8,
+      "share_to_llm": 0.834,
+      "routes": {
+        "regex": 66,
+        "router": 266,
+        "llm": 1668
+      },
+      "precision": 0.3557692307692308,
+      "recall": 0.7070063694267515,
+      "f1": 0.47334754797441364,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.1,
+      "hi": 0.9,
+      "share_to_llm": 0.8605,
+      "routes": {
+        "regex": 66,
+        "router": 213,
+        "llm": 1721
+      },
+      "precision": 0.3678571428571429,
+      "recall": 0.6560509554140127,
+      "f1": 0.47139588100686497,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.1,
+      "hi": 0.95,
+      "share_to_llm": 0.874,
+      "routes": {
+        "regex": 66,
+        "router": 186,
+        "llm": 1748
+      },
+      "precision": 0.3612167300380228,
+      "recall": 0.6050955414012739,
+      "f1": 0.4523809523809524,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.1,
+      "hi": 0.99,
+      "share_to_llm": 0.881,
+      "routes": {
+        "regex": 66,
+        "router": 172,
+        "llm": 1762
+      },
+      "precision": 0.34901960784313724,
+      "recall": 0.5668789808917197,
+      "f1": 0.4320388349514563,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.15,
+      "hi": 0.7,
+      "share_to_llm": 0.696,
+      "routes": {
+        "regex": 66,
+        "router": 542,
+        "llm": 1392
+      },
+      "precision": 0.33066666666666666,
+      "recall": 0.7898089171974523,
+      "f1": 0.46616541353383456,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.15,
+      "hi": 0.8,
+      "share_to_llm": 0.7455,
+      "routes": {
+        "regex": 66,
+        "router": 443,
+        "llm": 1491
+      },
+      "precision": 0.3651315789473684,
+      "recall": 0.7070063694267515,
+      "f1": 0.48156182212581344,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.15,
+      "hi": 0.9,
+      "share_to_llm": 0.772,
+      "routes": {
+        "regex": 66,
+        "router": 390,
+        "llm": 1544
+      },
+      "precision": 0.3786764705882353,
+      "recall": 0.6560509554140127,
+      "f1": 0.48018648018648025,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.15,
+      "hi": 0.95,
+      "share_to_llm": 0.7855,
+      "routes": {
+        "regex": 66,
+        "router": 363,
+        "llm": 1571
+      },
+      "precision": 0.37254901960784315,
+      "recall": 0.6050955414012739,
+      "f1": 0.4611650485436893,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.15,
+      "hi": 0.99,
+      "share_to_llm": 0.7925,
+      "routes": {
+        "regex": 66,
+        "router": 349,
+        "llm": 1585
+      },
+      "precision": 0.3603238866396761,
+      "recall": 0.5668789808917197,
+      "f1": 0.44059405940594054,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.2,
+      "hi": 0.7,
+      "share_to_llm": 0.589,
+      "routes": {
+        "regex": 66,
+        "router": 756,
+        "llm": 1178
+      },
+      "precision": 0.335149863760218,
+      "recall": 0.7834394904458599,
+      "f1": 0.4694656488549619,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.2,
+      "hi": 0.8,
+      "share_to_llm": 0.6385,
+      "routes": {
+        "regex": 66,
+        "router": 657,
+        "llm": 1277
+      },
+      "precision": 0.3716216216216216,
+      "recall": 0.7006369426751592,
+      "f1": 0.4856512141280353,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.2,
+      "hi": 0.9,
+      "share_to_llm": 0.665,
+      "routes": {
+        "regex": 66,
+        "router": 604,
+        "llm": 1330
+      },
+      "precision": 0.38636363636363635,
+      "recall": 0.6496815286624203,
+      "f1": 0.48456057007125886,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.2,
+      "hi": 0.95,
+      "share_to_llm": 0.6785,
+      "routes": {
+        "regex": 66,
+        "router": 577,
+        "llm": 1357
+      },
+      "precision": 0.3805668016194332,
+      "recall": 0.5987261146496815,
+      "f1": 0.4653465346534653,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.2,
+      "hi": 0.99,
+      "share_to_llm": 0.6855,
+      "routes": {
+        "regex": 66,
+        "router": 563,
+        "llm": 1371
+      },
+      "precision": 0.3682008368200837,
+      "recall": 0.5605095541401274,
+      "f1": 0.4444444444444445,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.3,
+      "hi": 0.7,
+      "share_to_llm": 0.396,
+      "routes": {
+        "regex": 66,
+        "router": 1142,
+        "llm": 792
+      },
+      "precision": 0.33714285714285713,
+      "recall": 0.7515923566878981,
+      "f1": 0.46548323471400394,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.3,
+      "hi": 0.8,
+      "share_to_llm": 0.4455,
+      "routes": {
+        "regex": 66,
+        "router": 1043,
+        "llm": 891
+      },
+      "precision": 0.3763440860215054,
+      "recall": 0.6687898089171974,
+      "f1": 0.481651376146789,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.3,
+      "hi": 0.9,
+      "share_to_llm": 0.472,
+      "routes": {
+        "regex": 66,
+        "router": 990,
+        "llm": 944
+      },
+      "precision": 0.39271255060728744,
+      "recall": 0.6178343949044586,
+      "f1": 0.48019801980198024,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.3,
+      "hi": 0.95,
+      "share_to_llm": 0.4855,
+      "routes": {
+        "regex": 66,
+        "router": 963,
+        "llm": 971
+      },
+      "precision": 0.3869565217391304,
+      "recall": 0.5668789808917197,
+      "f1": 0.45994832041343664,
+      "eur_per_1m": null
+    },
+    {
+      "lo": 0.3,
+      "hi": 0.99,
+      "share_to_llm": 0.4925,
+      "routes": {
+        "regex": 66,
+        "router": 949,
+        "llm": 985
+      },
+      "precision": 0.3738738738738739,
+      "recall": 0.5286624203821656,
+      "f1": 0.4379947229551451,
+      "eur_per_1m": null
+    }
+  ]
+}

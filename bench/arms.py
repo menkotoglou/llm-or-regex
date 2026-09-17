@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import json
 import os
+import threading
 import re
 import time
 from dataclasses import asdict, dataclass, field
@@ -82,7 +83,7 @@ class RegexArm(Arm):
         if self.provider == "anthropic":
             m["thinking_off"] = self._thinking_off_ok
         elif self.provider == "openai":
-            m["reasoning_off"] = self._reasoning_off_ok
+            m["reasoning_effort"] = self._reasoning_effort
             m["token_param"] = self._token_param
         return m
 
@@ -114,7 +115,7 @@ class APCArm(Arm):
         if self.provider == "anthropic":
             m["thinking_off"] = self._thinking_off_ok
         elif self.provider == "openai":
-            m["reasoning_off"] = self._reasoning_off_ok
+            m["reasoning_effort"] = self._reasoning_effort
             m["token_param"] = self._token_param
         return m
 
@@ -157,7 +158,7 @@ class OwnArm(Arm):
         if self.provider == "anthropic":
             m["thinking_off"] = self._thinking_off_ok
         elif self.provider == "openai":
-            m["reasoning_off"] = self._reasoning_off_ok
+            m["reasoning_effort"] = self._reasoning_effort
             m["token_param"] = self._token_param
         return m
 
@@ -175,6 +176,12 @@ class OwnArm(Arm):
 # --------------------------------------------------------------------------- llm
 
 _JSON_OBJ = re.compile(r"\{.*?\}", re.S)
+# A ceiling, not a target: well-behaved arms still answer in ~9 tokens. 24 was too tight for
+# models that reason a little before answering -- they hit the cap and return empty content,
+# which scores as "malformed" and fabricates a finding. Anthropic arms already run used 9-10
+# tokens and never approached 24, so their results are unaffected by this change.
+MAX_OUT = 256
+
 _RETRYABLE = ("rate", "429", "overloaded", "529", "500", "502", "503", "504", "timeout", "connection")
 
 
@@ -206,8 +213,10 @@ class LLMArm(Arm):
         self.user_tmpl = self.user_tmpl.strip()
         self._temperature_ok = True
         self._thinking_off_ok = True   # Opus 5 / Sonnet 5 think by default: 24 output tokens is not enough
-        self._reasoning_off_ok = True  # gpt-5.x reason by default: reasoning tokens eat the same 24
+        self._reasoning_effort = "none"   # step down to "low" if a model rejects "none"; 24 tokens is the budget
         self._token_param = "max_tokens"   # reasoning models want max_completion_tokens; remember which
+        self._probe_lock = threading.Lock()   # settle the flags on one call, not on N workers at once
+        self._probed = False
         self._client = self._make_client()
 
     def _make_client(self):
@@ -225,7 +234,7 @@ class LLMArm(Arm):
     def _call(self, text: str) -> tuple[str, int, int]:
         user = self.user_tmpl.replace("{text}", text)
         if self.provider == "anthropic":
-            kwargs = dict(model=self.model, max_tokens=24, system=self.system,
+            kwargs = dict(model=self.model, max_tokens=MAX_OUT, system=self.system,
                           messages=[{"role": "user", "content": user}])
             if self._temperature_ok:
                 kwargs["temperature"] = 0
@@ -240,16 +249,16 @@ class LLMArm(Arm):
                                     {"role": "user", "content": user}])
             if self._temperature_ok:
                 kwargs["temperature"] = 0
-            if self._reasoning_off_ok:
-                kwargs["reasoning_effort"] = "none"
-            kwargs[self._token_param] = 24
+            if self._reasoning_effort:
+                kwargs["reasoning_effort"] = self._reasoning_effort
+            kwargs[self._token_param] = MAX_OUT
             try:
                 r = self._client.chat.completions.create(**kwargs)
             except Exception as e:  # newer OpenAI models want max_completion_tokens -- switch once, not per call
                 if "max_tokens" in str(e) and self._token_param == "max_tokens":
                     self._token_param = "max_completion_tokens"
                     kwargs.pop("max_tokens")
-                    kwargs[self._token_param] = 24
+                    kwargs[self._token_param] = MAX_OUT
                     r = self._client.chat.completions.create(**kwargs)
                 else:
                     raise
@@ -267,11 +276,23 @@ class LLMArm(Arm):
         if self.provider == "anthropic":
             m["thinking_off"] = self._thinking_off_ok
         elif self.provider == "openai":
-            m["reasoning_off"] = self._reasoning_off_ok
+            m["reasoning_effort"] = self._reasoning_effort
             m["token_param"] = self._token_param
         return m
 
     def predict(self, item_id, text, label):
+        # The capability flags above are discovered by failing once. Without this, every worker
+        # in the pool discovers them independently and burns that item's retries doing it.
+        if not self._probed:
+            with self._probe_lock:
+                if not self._probed:
+                    try:
+                        return self._predict(item_id, text, label)
+                    finally:
+                        self._probed = True
+        return self._predict(item_id, text, label)
+
+    def _predict(self, item_id, text, label):
         last_err, attempts = None, 0
         t0 = time.perf_counter()
         for attempt in range(1, self.max_retries + 1):
@@ -293,8 +314,9 @@ class LLMArm(Arm):
                 if "thinking" in msg.lower() and self._thinking_off_ok:
                     self._thinking_off_ok = False   # model rejects an explicit thinking block
                     continue
-                if "reasoning_effort" in msg.lower() and self._reasoning_off_ok:
-                    self._reasoning_off_ok = False  # non-reasoning model: no such parameter
+                if "reasoning_effort" in msg.lower() and self._reasoning_effort:
+                    # "none" unsupported -> "low" (the documented minimum), then drop it entirely.
+                    self._reasoning_effort = "low" if self._reasoning_effort == "none" else None
                     continue
                 if any(k in msg.lower() for k in _RETRYABLE) and attempt < self.max_retries:
                     time.sleep(min(2 ** attempt, 30))
