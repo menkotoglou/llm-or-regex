@@ -172,3 +172,20 @@ destroying LLM precision at natural prevalence.
 
 Opus 5 1.5% · astra 4.5% · gpt-5.4-mini 5.5% · Haiku 6.5%. All at default sampling;
 temperature 0 was not reachable (see the rewrite note above).
+
+## Slide 16 — extraction  (`results/extraction.md`, `make extraction`)
+
+Accuracy on stated fields, invention rate on absent fields in brackets. n=200 utterances,
+593 stated field-values, 407 absent.
+
+| field | regex | Haiku 4.5 | Opus 5 | gpt-5.4-mini | gpt-6-astra |
+|---|---|---|---|---|---|
+| time | **100%** | 98% | 100% | 99% (1%) | 98% |
+| party_size | **100%** | 100% | 100% | 99% | 100% |
+| date | 69% | 99% | 99% | 98% (1%) | 96% |
+| cuisine | 46% | 87% | 83% | **89%** | 59% |
+| location | 0% | 54% (1%) | 70% | 77% (6%) | **95%** |
+| **invented a value that wasn't there** | **0%** | 0% | 0% | **2%** | 0% |
+
+Line 304 ("on the fields that have a grammar the regex is the accuracy ceiling"): **100%**.
+Line 306 (invention): **2%** for gpt-5.4-mini, 6% on location alone. Regex cannot invent.
