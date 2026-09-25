@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -21,7 +22,8 @@ from .arms import arm_slug, build_arm
 from .data import load_sample
 
 ROOT = Path(__file__).resolve().parent.parent
-RESULTS = ROOT / "results"
+# BENCH_RESULTS lets `make dryrun` write somewhere other than the committed evidence.
+RESULTS = Path(os.environ.get("BENCH_RESULTS", ROOT / "results"))
 
 
 def result_path(sample: str, arm: str, run: int) -> Path:

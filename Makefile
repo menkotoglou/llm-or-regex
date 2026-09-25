@@ -1,28 +1,32 @@
 # LLM or Regex? - benchmark harness for the PyCon Greece 2026 talk.
 #
-# Usage (in order):
-#   make setup            venv + deps
-#   make wordlist         LDNOOBW English list for the regex arm
-#   make samples          balanced-2k + natural-2k + train-4k from Civil Comments (needs network)
-#   make dryrun           every module with a fake LLM arm: no network, no money
-#   make local            experiments 1-3 for regex + apc + own (no API cost)
-#   make obfuscation      experiment 7
-#   make extraction       slide 16: field extraction + invention rate   <- spends money
-#   make identity         experiment 9
-#   make llm              experiments 1-4 for the LLM arms          <- spends money
-#   make handlabeled      the LLM arms on the hand-labelled sets     <- spends money
-#   make cost             fill config/prices.toml first
-#   make cascade          experiment 8, offline
-#   make report           results/summary.md
+# Free, no API keys:
+#   make setup            venv + deps (requirements-lock.txt has the exact versions behind the results)
+#   make tables           rebuild every table in results/ from the committed per-item rows, offline
+#   make dryrun           exercise every module with a fake LLM arm; writes to results-dryrun/, not results/
+#   make wordlist         fetch the LDNOOBW English list for the regex arm (network)
+#   make samples          rebuild data/samples/ from Civil Comments (network)
+#   make local            regex + alt-profanity-check + own classifier on the 2017 samples, latency, determinism
+#   make obfuscation      the spelling-tricks experiment, local arms
+#   make identity ALL_ARMS="regex apc own:train-4k"    the identity-term experiment, local arms only
 #
-# Set the model ids once:
-LLM_SMALL    ?= llm:anthropic:claude-haiku-4-5-20251001
-LLM_FRONTIER ?= llm:anthropic:claude-opus-5
-LLM_ARMS     ?= $(LLM_SMALL) $(LLM_FRONTIER)
-OWN          ?= own:train-4k
-ALL_ARMS     := regex apc $(OWN) $(LLM_ARMS)
-PY           ?= .venv/bin/python
-WORKERS      ?= 8
+# Spends money (keys in the environment; every run is resumable, so finished items are never re-bought):
+#   make llm              the LLM arms on the 2017 samples, latency, determinism
+#   make handlabeled      every arm on surge-1k, obfuscation and identity
+#   make extraction       the booking-request extraction bench
+#   make identity         the identity-term experiment, every arm
+#
+# Offline, once the runs exist:
+#   make cost cascade report      (make tables runs all three plus the identity and obfuscation tables)
+
+# The four LLM arms behind the published numbers: a small and a frontier model from each of two vendors.
+LLM_ARMS ?= llm:anthropic:claude-haiku-4-5-20251001 llm:anthropic:claude-opus-5 \
+            llm:openai:gpt-5.4-mini llm:openai:gpt-6-astra
+OWN      ?= own:train-4k
+ALL_ARMS ?= regex apc $(OWN) $(LLM_ARMS)
+SAMPLES  ?= balanced-2k natural-2k surge-1k
+PY       ?= .venv/bin/python
+WORKERS  ?= 8
 
 arm_flags = $(foreach a,$(1),--arm $(a))
 
@@ -40,7 +44,7 @@ local:
 	$(PY) -m bench.run --sample natural-2k  --arm regex --arm apc --arm $(OWN) --workers 1
 	$(PY) -m bench.latency --sample balanced-2k --arm regex --arm apc --arm $(OWN)
 	$(PY) -m bench.determinism --sample balanced-2k --arm apc --runs 2 --workers 1
-	$(PY) -m bench.report --arm regex --arm apc --arm $(OWN)
+	$(MAKE) report
 
 obfuscation:
 	$(PY) scripts/make_obfuscation.py --base balanced-2k
@@ -62,7 +66,7 @@ handlabeled:
 	$(PY) -m bench.run --sample surge-1k    $(call arm_flags,$(ALL_ARMS)) --workers 4
 	$(PY) -m bench.run --sample obfuscation $(call arm_flags,$(ALL_ARMS)) --workers 4
 	$(PY) -m bench.run --sample identity    $(call arm_flags,$(ALL_ARMS)) --workers 4
-	$(PY) -m bench.report $(call arm_flags,$(ALL_ARMS)) --samples surge-1k obfuscation
+	$(MAKE) report
 	$(PY) scripts/obfuscation_table.py
 	$(PY) scripts/identity_table.py
 
@@ -74,17 +78,22 @@ cost:
 	$(PY) -m bench.cost --sample natural-2k $(call arm_flags,$(ALL_ARMS))
 
 cascade:
-	$(PY) -m bench.cascade --sample natural-2k --llm $(LLM_SMALL) --router $(OWN)
-	$(PY) -m bench.cascade --sample natural-2k --llm $(LLM_FRONTIER) --router $(OWN)
+	$(foreach m,$(LLM_ARMS),$(PY) -m bench.cascade --sample natural-2k --llm $(m) --router $(OWN) &&) true
 
 report:
-	$(PY) -m bench.report $(call arm_flags,$(ALL_ARMS))
+	$(PY) -m bench.report $(call arm_flags,$(ALL_ARMS)) --samples $(SAMPLES)
 
-# no network, no money: exercises every module with the fake arm
+# offline and free: every table from the committed per-item rows (all but extraction, see results/README.md)
+tables: cost cascade report
+	$(PY) scripts/obfuscation_table.py
+	$(PY) scripts/identity_table.py
+
+# no network, no money: every module with the fake arm, kept away from the committed results
+dryrun: export BENCH_RESULTS = $(CURDIR)/results-dryrun
 dryrun:
 	$(PY) -m bench.run --sample balanced-2k --arm regex --arm apc --arm llm:fake:any --n 300 --workers 4
 	$(PY) -m bench.latency --sample balanced-2k --arm regex --arm apc --arm llm:fake:any --n 100 --warmup 10
 	$(PY) -m bench.determinism --sample balanced-2k --arm llm:fake:any --n 100 --runs 3
 	$(PY) -m bench.report --arm regex --arm apc --arm llm:fake:any --samples balanced-2k
 
-.PHONY: setup wordlist samples local obfuscation identity extraction llm handlabeled cost cascade report dryrun
+.PHONY: setup wordlist samples local obfuscation identity extraction llm handlabeled cost cascade report tables dryrun
