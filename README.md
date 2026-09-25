@@ -1,77 +1,150 @@
-# LLM or Regex? — benchmark harness
+# LLM or Regex?
 
-Numbers behind the PyCon Greece 2026 talk *LLM or Regex? Choosing Tools for Text Problems in Python*.
-Five arms, one interface, six decision axes. Everything here is reproducible from one command per
-experiment; the per-item outputs (`results/**/run*.jsonl`) are what the slides are built from.
+The benchmark behind **LLM or Regex? Choosing Tools for Text Problems in Python**, a talk at
+[PyCon Greece 2026](https://2026.pycon.gr/en/program/schedule/) (Athens, 12 October 2026).
 
-Read `CLAUDE.md` before running anything with an agent. `RUNBOOK.md` has the step order.
+Three kinds of tool for the same text problem, measured side by side:
+
+- **a regex**: a banned-word list;
+- **classical ML**: [alt-profanity-check](https://pypi.org/project/alt-profanity-check/), and a small
+  scikit-learn classifier trained on the task's own labels;
+- **LLMs**: four models from two vendors, one prompt.
+
+The main task is comment moderation. A small extraction task (booking requests → form fields)
+checks that the conclusions transfer. The talk scores every tool on six questions: what does
+"right" mean, what happens when it's wrong, can the user wait, what does it cost, how does it age,
+and can you explain a decision. Every figure in the talk comes from the per-item rows committed in
+[`results/`](results/), and one command rebuilds every table from them.
+
+## Results
+
+| tool | F1 · 2017 news, balanced | F1 · 2017 news, 8% toxic | F1 · 2022 social media | median latency | € per 1M comments | answers changed on rerun |
+|---|---:|---:|---:|---:|---:|---:|
+| regex (LDNOOBW list) | 0.167 | 0.161 | 0.386 | 0.15 ms | 0.00 | — |
+| alt-profanity-check 1.9.0 | 0.462 | 0.498 | 0.634 | 1.2 ms | 0.01 | 0.0% |
+| own classifier (tf-idf + LR, 4k labels) | **0.774** | 0.364 | 0.739 | 0.6 ms | 0.00 | — |
+| claude-haiku-4-5 | 0.588 | 0.447 | 0.959 | 676 ms | 208.55 | 6.5% |
+| claude-opus-5 | 0.666 | **0.467** | 0.977 | 1,819 ms | 1,398.79 | 1.5% |
+| gpt-5.4-mini | 0.709 | 0.415 | 0.968 | 624 ms | 148.52 | 5.5% |
+| gpt-6-astra | 0.749 | 0.407 | **0.989** | 1,652 ms | 2,195.05 | 4.5% |
+
+From [`results/summary.md`](results/summary.md). Latency is one call at a time from the author's
+laptop (macOS, arm64), network included. Cost is at natural prevalence (8% toxic) from the API's
+real token counts, at prices from 17 September 2026 ([`config/prices.toml`](config/prices.toml)); the
+local tools are priced on a small 1 vCPU cloud server. "Answers changed" is the same 200 comments
+asked three times (twice for alt-profanity-check).
+
+What it shows:
+
+- **The winner depends on who wrote the answers.** Trained on 2017 crowd labels, a 20-line
+  classifier beats every LLM on more comments labelled the same way (0.774 against 0.588–0.749),
+  and loses to all of them on 2022 social media (0.739 against 0.959–0.989).
+- **Each tool fails differently.** The word list fails on words. alt-profanity-check answers "is
+  there profanity?" when the product asks "is this hostile?". The LLMs never broke the output
+  format (0 malformed answers in 24,316 rows), but they change a few answers in every hundred when
+  asked again, even the one model that accepted temperature 0.
+- **The failure that silences people.** Of 115 friendly sentences that mention an identity,
+  alt-profanity-check flags 6 ("queer" 4 of 5, "gay" 2 of 5), the classifier trained on 2017 labels
+  flags 30, and the word list and all four LLMs flag none ([`results/identity.md`](results/identity.md)).
+- **Spelling tricks** (`f u c k`, `f**k`, lookalike letters) take the word list from 100% recall to
+  under 9%, and alt-profanity-check from 50% to about 12–14%. The LLMs don't notice
+  ([`results/obfuscation.md`](results/obfuscation.md)).
+- **Speed and money** are far apart. At 100,000 comments a day the local tools cost effectively
+  nothing a month, the cheapest LLM about €450 and the most expensive about €6,600.
+- **Chaining wins.** When a classifier trained on the task's labels decides only when it's sure,
+  and only the unsure band goes to the LLM, the result is cheaper *and* more accurate than the LLM
+  alone, for all four LLMs ([`results/cascade/`](results/cascade/)). alt-profanity-check can't be that
+  first step: when it is wrong, it is confidently wrong, so its mistakes never reach the LLM.
+- **Extraction.** On fields with a pattern (time, party size) the regex is perfect; on fields that
+  need meaning the LLMs win; and gpt-5.4-mini invented a location in 6% of the requests that didn't
+  mention one ([`results/extraction.md`](results/extraction.md)).
+
+These are results for these datasets. The point of the repo is that you can run the same
+comparison on your own traffic.
+
+## The arms
 
 | arm | what it is |
 |---|---|
-| `regex` | LDNOOBW English banned-word list, word-boundary match, case-insensitive |
-| `apc` | [`alt-profanity-check`](https://pypi.org/project/alt-profanity-check/) 1.9.0 — bag of words + LinearSVC, threshold 0.5 |
-| `own:<train-sample>` | tf-idf (word + char n-grams) + logistic regression trained on *your* labels (`train-4k`, disjoint from the eval samples). The "you have a thousand labels" arm |
-| `llm:<provider>:<model>` | one prompt (`prompts/moderation.txt`), JSON answer, temperature 0. Run it once for a small model and once for a frontier model |
+| `regex` | the LDNOOBW English list (403 entries), case-insensitive, word boundaries |
+| `apc` | alt-profanity-check 1.9.0 (bag of words, linear SVM), threshold 0.5. 1.9.1 ships the same weights and scores identically |
+| `own:<sample>` | tf-idf (word and character n-grams) + logistic regression trained on that sample: `train-4k` everywhere, disjoint from the test sets; `surge-1k` for one identity comparison |
+| `llm:<provider>:<model>` | one prompt ([`prompts/moderation.txt`](prompts/moderation.txt)), a JSON answer, at most 256 output tokens |
+| `llm:fake:any` | an offline stand-in used by `make dryrun` |
 
-## Datasets
+The four LLM arms and the settings each one actually accepted (recorded per row under `meta`):
 
-[Civil Comments](https://huggingface.co/datasets/google/civil_comments) (Jigsaw Unintended Bias, 2019), gold = `toxicity >= 0.5`.
+| arm | settings |
+|---|---|
+| `llm:anthropic:claude-haiku-4-5-20251001` | default sampling (the SDK no longer takes `temperature`), thinking off |
+| `llm:anthropic:claude-opus-5` | default sampling (the model rejects `temperature`), thinking off |
+| `llm:openai:gpt-5.4-mini` | `temperature=0`, `reasoning_effort="none"` |
+| `llm:openai:gpt-6-astra` | default sampling (the model rejects `temperature`), `reasoning_effort="low"` (it rejects `"none"`) |
 
-**Not** the Jigsaw Toxic Comment (Wikipedia) set: `alt-profanity-check` was trained on it, so evaluating
-there would be leakage in its favour. The LLMs have very likely seen both corpora in pretraining; that
-asymmetry is stated on the slide, and `data/handlabeled/ood.csv` is the sanity check.
+## Data
 
-Three fixed samples, seed `20261012`, written to `data/samples/` and committed:
+Civil Comments (2017 news comments, CC0), the Surge AI toxicity set (2022 social media, MIT), the
+LDNOOBW word list (CC BY 4.0), and a few small sets generated here: identity sentences, spelling
+tricks and booking requests. Details, counts and licences: [`data/README.md`](data/README.md).
+Content warning: these are toxicity datasets, and some rows are offensive by design.
 
-- `balanced-2k` — 1,000 toxic / 1,000 clean → accuracy comparison
-- `natural-2k` — 2,000 at natural prevalence (~8% toxic) → cost and precision, i.e. what production looks like
-- `train-4k` — 2,000 / 2,000, disjoint from both → training data for `own:train-4k`
+## Reproduce
 
-Also included: `data/handlabeled/surge-1k.csv` (Surge AI toxicity, 2022, 1,000 items, held out from apc)
-and the generated `obfuscation.csv` and `identity.csv`. Sandbox results for the non-LLM arms and the
-write-up are in `results/`.
-
-## Run
+Rebuild every table from the committed per-item rows. This is offline, free, and takes a few
+seconds:
 
 ```sh
-make setup wordlist samples      # once
-make dryrun                      # every module, fake LLM arm, no network, no money
-make local obfuscation           # experiments 1-3 and 7 for regex + apc + own, free
-make identity ALL_ARMS="regex apc own:train-4k"
-
-export ANTHROPIC_API_KEY=... OPENAI_API_KEY=...
-make llm LLM_SMALL=llm:anthropic:<small> LLM_FRONTIER=llm:anthropic:<frontier>   # spends money
-make handlabeled LLM_SMALL=... LLM_FRONTIER=...
-# fill config/prices.toml (dated), then:
-make cost cascade report LLM_SMALL=... LLM_FRONTIER=...
+make setup      # .venv + requirements.txt; for the exact versions: .venv/bin/pip install -r requirements-lock.txt
+make tables     # cost, chains, summary, identity and obfuscation tables
 ```
 
-Every run is resumable: items already in `results/<sample>/<arm>/run<k>.jsonl` are skipped.
+The only differences from the committed tables should be the timestamp and commit hash in
+`results/summary.md`. The extraction table is the exception: its per-item outputs were not stored,
+so it needs the LLM arms again.
 
-## Experiments → axes → slides
+Re-run the experiments:
 
-| # | command | measures | axis |
-|---|---|---|---|
-| 1 | `bench.run --sample balanced-2k` | P / R / F1 per arm + the worst errors (`results/errors/`) | accuracy ceiling, failure mode |
-| 2 | `bench.run --sample natural-2k` + `bench.cost` | € per 1M classifications, precision at natural prevalence | cost |
-| 3 | `bench.latency` | p50/p95/p99 at concurrency 1, 50 warmup; apc batch throughput, cold start, RSS | latency, ops reality |
-| 4 | `bench.determinism` | same 200 items × 3 runs at temperature 0: disagreement %, malformed % | drift, failure mode |
-| 5 | `bench.run --sample ood` | hand-labelled out-of-distribution set, see `data/handlabeled/README.md` | contamination check |
-| 7 | `make obfuscation` | every word-list match l33t / spaced / homoglyph / asterisk / concatenated, recall per transform | failure mode |
-| 9 | `make identity` | 115 innocuous sentences mentioning an identity, all clean; false-positive rate per identity per arm | failure mode, the one that silences people |
-| 8 | `bench.cascade` | regex → router confidence band → LLM only for the uncertain middle; traffic share to LLM, blended F1, blended € | the hybrid, Section 5 |
+```sh
+make dryrun                                        # every module with a fake LLM arm: no network, no money
+make wordlist samples                              # network: re-fetch the word list, redraw the samples (both committed)
+make local obfuscation                             # the free arms on the 2017 samples and the spelling tricks
+make identity ALL_ARMS="regex apc own:train-4k"    # the identity sentences, free arms only
 
-`bench.report` writes `results/summary.md`: the one table that becomes the central slide.
+# The LLM arms cost money: about 6,500 calls per model for everything.
+export ANTHROPIC_API_KEY=... OPENAI_API_KEY=...
+make llm handlabeled extraction
+make tables
+```
 
-## Hygiene that survives Q&A
+Runs are resumable. Items already present in `results/<sample>/<arm>/run<k>.jsonl` are skipped, so
+a crash or a rate limit costs nothing; lower `WORKERS` and run the same command again. Latency and
+extraction are measured fresh every time. To try other models, set `LLM_ARMS`, and add their prices
+(dated, from the providers' pricing pages) to `config/prices.toml` before `make cost`.
 
-- One machine, stated on the slide (`results/latency/*.json` records platform and time).
-- LLM latency includes the network from the measuring machine. Say where you measured from.
-- Costs come from the API's real token counts × a dated price table (`config/prices.toml`). Never estimates.
-- Malformed LLM output is a first-class result, not an exclusion: `--policy open|closed|drop` shows how
-  each choice moves precision and recall. That is the "what does your app do when the model returns prose?" slide.
-- `apc` threshold is the library default (0.5); the cascade sweeps the confidence band, not the threshold.
-- The cascade router is `own`, not `apc`: apc's misses score ~0.005, so they never reach its uncertain band.
-- Seeds, sample indices, prompt and package versions are committed. The summary carries the commit hash.
+## Layout
 
-MIT.
+```
+bench/          the harness: arms, runs, metrics, latency, determinism, cost, chains, report, extraction
+scripts/        data generators (identity, obfuscation, extraction), table scripts, word-list fetch
+prompts/        the moderation and extraction prompts, verbatim
+config/         dated prices and the compute assumption for the local arms
+data/           samples and hand-made sets, with sources and licences
+results/        per-item rows and every table built from them; see results/README.md
+notes/          working notes from preparing the talk
+CLAUDE.md       rules for coding agents working in this repo (never invent a number; ask before spending)
+```
+
+## Caveats
+
+- The LLMs have very likely seen Civil Comments and the Surge AI set during pretraining. That
+  favours them.
+- Latency depends on where you run from. These numbers include the author's home network.
+- Prices change. The table in `config/prices.toml` carries its date.
+- The chain's best thresholds were picked on the same data they were scored on. A wide range of
+  thresholds (10 to 27 of the 30 tried, depending on the LLM) beats the LLM alone on both cost
+  and F1.
+- The extraction set is generated from templates, not collected.
+
+## Licence
+
+Code: [MIT](LICENSE). Data: see [`data/README.md`](data/README.md) (CC0, MIT and CC BY 4.0 sources).
