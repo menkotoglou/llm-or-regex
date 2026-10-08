@@ -14,11 +14,13 @@ precision/recall/F1 of the *blended* answer, and blended cost per 1M
 (share_to_llm x LLM cost + router cost). Needs run0 of regex, the router and the
 LLM arm on the same sample, plus bench.cost for those arms.
 
-The router defaults to own:train-4k, not apc: apc's misses score ~0.005, so they
-never land in its uncertain band. Confidence routing only works when the cheap
-model answers the same question as the product.
+The router defaults to own:train-4k. Measured with both (2026-10-09): on natural-2k
+either router beats the LLM alone on F1 and cost for all four LLMs, and apc routes
+best (30 of 30 settings better on both); on surge-1k, where the LLMs alone score
+0.96-0.99, neither does, because apc's misses score ~0.005 and never reach the LLM.
 
-Output: results/cascade/<sample>_<llm>.json and .md
+Output: results/cascade/<sample>_<llm>.json and .md for the default router, and
+<sample>_<llm>__router_<router>.json and .md for any other, so no run overwrites another.
 """
 from __future__ import annotations
 
@@ -103,6 +105,8 @@ def main(argv=None):
     a = ap.parse_args(argv)
     res = evaluate(a.sample, a.llm, a.router, a.policy)
     stem = f"{a.sample}_{arm_slug(a.llm)}"
+    if a.router != "own:train-4k":
+        stem += f"__router_{arm_slug(a.router)}"
     write_json(RESULTS / "cascade" / f"{stem}.json", res)
     md = to_markdown(res)
     (RESULTS / "cascade" / f"{stem}.md").write_text(md, encoding="utf-8")

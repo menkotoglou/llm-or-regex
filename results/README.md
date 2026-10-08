@@ -29,7 +29,8 @@ Runs are resumable: items already present are skipped, errored rows are kept and
 | `latency/<arm>.json` | `bench.latency` | p50/p95/p99 at concurrency 1 after 50 warm-up calls; for alt-profanity-check also cold start, RSS and batch throughput |
 | `cost/<arm>.json` | `bench.cost` | € per 1M at natural prevalence, from real token counts × `config/prices.toml` (prices as of 17 Sep 2026) |
 | `determinism/<arm>.json` | `bench.determinism` | the same 200 items asked 3 times: how many answers changed |
-| `cascade/natural-2k_<llm>.md` | `bench.cascade` | the chain (small model decides when sure, LLM only for the unsure band): F1 and € for every LO/HI pair |
+| `cascade/natural-2k_<llm>.md` | `bench.cascade` | the chain with `own:train-4k` in the middle (it decides when sure, the LLM only gets the unsure band): F1 and € for every LO/HI pair |
+| `cascade/<sample>_<llm>__router_apc.md` | `bench.cascade --router apc` | the same chain with alt-profanity-check in the middle, on natural-2k and surge-1k (the talk's chain) |
 | `identity.md` | `scripts/identity_table.py` | share of the 5 friendly sentences per identity that each arm flagged |
 | `obfuscation.md` | `scripts/obfuscation_table.py` | recall per spelling trick |
 | `extraction.md`, `extraction/*.json` | `bench.extract` | per-field accuracy and invention rate on the booking requests (aggregates only: per-item extraction outputs were not stored) |

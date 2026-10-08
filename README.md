@@ -51,10 +51,12 @@ What it shows:
   ([`results/obfuscation.md`](results/obfuscation.md)).
 - **Speed and money** are far apart. At 100,000 comments a day the local tools cost effectively
   nothing a month, the cheapest LLM about €450 and the most expensive about €6,600.
-- **Chaining wins.** When a classifier trained on the task's labels decides only when it's sure,
-  and only the unsure band goes to the LLM, the result is cheaper *and* more accurate than the LLM
-  alone, for all four LLMs ([`results/cascade/`](results/cascade/)). alt-profanity-check can't be that
-  first step: when it is wrong, it is confidently wrong, so its mistakes never reach the LLM.
+- **Chaining wins on the news comments.** When a cheap model decides only when it's sure and only
+  the unsure band goes to the LLM, the result is cheaper *and* more accurate than the LLM alone on
+  natural-2k, for all four LLMs ([`results/cascade/`](results/cascade/)). With alt-profanity-check in
+  the middle, 18% of comments reach the LLM and all 30 thresholds tried beat the LLM alone on both;
+  with the classifier trained on the task's labels, 10 to 27 of the 30 do. On 2022 social media,
+  where the LLMs alone score 0.96–0.99, no chain beats them on accuracy: it only saves money.
 - **Extraction.** On fields with a pattern (time, party size) the regex is perfect; on fields that
   need meaning the LLMs win; and gpt-5.4-mini invented a location in 6% of the requests that didn't
   mention one ([`results/extraction.md`](results/extraction.md)).
@@ -140,9 +142,9 @@ CLAUDE.md       rules for coding agents working in this repo (never invent a num
   favours them.
 - Latency depends on where you run from. These numbers include the author's home network.
 - Prices change. The table in `config/prices.toml` carries its date.
-- The chain's best thresholds were picked on the same data they were scored on. A wide range of
-  thresholds (10 to 27 of the 30 tried, depending on the LLM) beats the LLM alone on both cost
-  and F1.
+- The chain's best thresholds were picked on the same data they were scored on. With
+  alt-profanity-check in the middle, all 30 thresholds tried beat the LLM alone on both cost and
+  F1 on natural-2k; with the classifier, 10 to 27 of the 30, depending on the LLM.
 - The extraction set is generated from templates, not collected.
 
 ## Licence

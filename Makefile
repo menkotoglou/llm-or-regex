@@ -79,6 +79,7 @@ cost:
 
 cascade:
 	$(foreach m,$(LLM_ARMS),$(PY) -m bench.cascade --sample natural-2k --llm $(m) --router $(OWN) &&) true
+	$(foreach s,natural-2k surge-1k,$(foreach m,$(LLM_ARMS),$(PY) -m bench.cascade --sample $(s) --llm $(m) --router apc &&)) true
 
 report:
 	$(PY) -m bench.report $(call arm_flags,$(ALL_ARMS)) --samples $(SAMPLES)
