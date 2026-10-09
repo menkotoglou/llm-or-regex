@@ -133,7 +133,6 @@ config/         dated prices and the compute assumption for the local arms
 data/           samples and hand-made sets, with sources and licences
 results/        per-item rows and every table built from them; see results/README.md
 notes/          working notes from preparing the talk
-CLAUDE.md       rules for coding agents working in this repo (never invent a number; ask before spending)
 ```
 
 ## Caveats

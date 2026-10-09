@@ -1,4 +1,4 @@
-# Summary  (generated 2026-09-17 12:45, commit 2b2444a, malformed policy = open)
+# Summary  (generated 2026-09-17 12:45, commit 048f7f0, malformed policy = open)
 
 | arm | P (balanced-2k) | R (balanced-2k) | F1 (balanced-2k) | P (natural-2k) | R (natural-2k) | F1 (natural-2k) | P (surge-1k) | R (surge-1k) | F1 (surge-1k) | p50 ms | p95 ms | p99 ms | EUR/1M | malformed | disagree@t0 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|

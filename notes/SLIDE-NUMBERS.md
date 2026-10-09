@@ -116,7 +116,7 @@ commit `[fill after the run]` · `git rev-parse --short HEAD`
 
 ---
 
-# FINAL — all four LLM arms, costs included  (commit 732c848)
+# FINAL — all four LLM arms, costs included  (commit 6b1dc73)
 
 22,688 scored LLM items. **0 malformed. 0 unresolved errors.** Four models, two vendors.
 
