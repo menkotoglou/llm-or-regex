@@ -78,45 +78,6 @@ class RegexArm(Arm):
         self.pattern = re.compile(rf"\b(?:{alternation})\b", re.IGNORECASE)
         self.n_words = len(words)
 
-    def complete_retrying(self, system: str, user: str) -> tuple[str, int, int]:
-        """complete() under the same capability-discovery ladder predict() uses.
-
-        complete() alone raises on the first unsupported parameter, because the flags are
-        only ever flipped by the handler in _predict. Anything calling complete() directly
-        (bench.extract) needs this wrapper or it fails on every single item.
-        """
-        last_err = None
-        for attempt in range(1, self.max_retries + 1):
-            try:
-                return self.complete(system, user)
-            except Exception as e:  # noqa: BLE001
-                msg = str(e)
-                last_err = msg
-                low = msg.lower()
-                if "temperature" in low and self._temperature_ok:
-                    self._temperature_ok = False
-                    continue
-                if "thinking" in low and self._thinking_off_ok:
-                    self._thinking_off_ok = False
-                    continue
-                if "reasoning_effort" in low and self._reasoning_effort:
-                    self._reasoning_effort = "low" if self._reasoning_effort == "none" else None
-                    continue
-                if any(k in low for k in _RETRYABLE) and attempt < self.max_retries:
-                    time.sleep(min(2 ** attempt, 30))
-                    continue
-                break
-        raise RuntimeError(last_err or "unknown")
-
-    def _meta(self) -> dict:
-        m = {"model": self.model, "temperature_ok": self._temperature_ok}
-        if self.provider == "anthropic":
-            m["thinking_off"] = self._thinking_off_ok
-        elif self.provider == "openai":
-            m["reasoning_effort"] = self._reasoning_effort
-            m["token_param"] = self._token_param
-        return m
-
     def predict(self, item_id, text, label):
         t0 = time.perf_counter()
         hit = self.pattern.search(text)
@@ -139,45 +100,6 @@ class APCArm(Arm):
         self.threshold = threshold
         import importlib.metadata as md
         self.version = md.version("alt-profanity-check")
-
-    def complete_retrying(self, system: str, user: str) -> tuple[str, int, int]:
-        """complete() under the same capability-discovery ladder predict() uses.
-
-        complete() alone raises on the first unsupported parameter, because the flags are
-        only ever flipped by the handler in _predict. Anything calling complete() directly
-        (bench.extract) needs this wrapper or it fails on every single item.
-        """
-        last_err = None
-        for attempt in range(1, self.max_retries + 1):
-            try:
-                return self.complete(system, user)
-            except Exception as e:  # noqa: BLE001
-                msg = str(e)
-                last_err = msg
-                low = msg.lower()
-                if "temperature" in low and self._temperature_ok:
-                    self._temperature_ok = False
-                    continue
-                if "thinking" in low and self._thinking_off_ok:
-                    self._thinking_off_ok = False
-                    continue
-                if "reasoning_effort" in low and self._reasoning_effort:
-                    self._reasoning_effort = "low" if self._reasoning_effort == "none" else None
-                    continue
-                if any(k in low for k in _RETRYABLE) and attempt < self.max_retries:
-                    time.sleep(min(2 ** attempt, 30))
-                    continue
-                break
-        raise RuntimeError(last_err or "unknown")
-
-    def _meta(self) -> dict:
-        m = {"model": self.model, "temperature_ok": self._temperature_ok}
-        if self.provider == "anthropic":
-            m["thinking_off"] = self._thinking_off_ok
-        elif self.provider == "openai":
-            m["reasoning_effort"] = self._reasoning_effort
-            m["token_param"] = self._token_param
-        return m
 
     def predict(self, item_id, text, label):
         t0 = time.perf_counter()
@@ -212,45 +134,6 @@ class OwnArm(Arm):
         t0 = time.perf_counter()
         self.pipe.fit(df["text"].values, df["label"].values)
         self.fit_seconds = time.perf_counter() - t0
-
-    def complete_retrying(self, system: str, user: str) -> tuple[str, int, int]:
-        """complete() under the same capability-discovery ladder predict() uses.
-
-        complete() alone raises on the first unsupported parameter, because the flags are
-        only ever flipped by the handler in _predict. Anything calling complete() directly
-        (bench.extract) needs this wrapper or it fails on every single item.
-        """
-        last_err = None
-        for attempt in range(1, self.max_retries + 1):
-            try:
-                return self.complete(system, user)
-            except Exception as e:  # noqa: BLE001
-                msg = str(e)
-                last_err = msg
-                low = msg.lower()
-                if "temperature" in low and self._temperature_ok:
-                    self._temperature_ok = False
-                    continue
-                if "thinking" in low and self._thinking_off_ok:
-                    self._thinking_off_ok = False
-                    continue
-                if "reasoning_effort" in low and self._reasoning_effort:
-                    self._reasoning_effort = "low" if self._reasoning_effort == "none" else None
-                    continue
-                if any(k in low for k in _RETRYABLE) and attempt < self.max_retries:
-                    time.sleep(min(2 ** attempt, 30))
-                    continue
-                break
-        raise RuntimeError(last_err or "unknown")
-
-    def _meta(self) -> dict:
-        m = {"model": self.model, "temperature_ok": self._temperature_ok}
-        if self.provider == "anthropic":
-            m["thinking_off"] = self._thinking_off_ok
-        elif self.provider == "openai":
-            m["reasoning_effort"] = self._reasoning_effort
-            m["token_param"] = self._token_param
-        return m
 
     def predict(self, item_id, text, label):
         t0 = time.perf_counter()

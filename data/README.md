@@ -21,7 +21,7 @@ raters who called them toxic). Surge AI labels are the dataset's own `is_toxic`.
 
 Not used on purpose: the Jigsaw Toxic Comment (Wikipedia) set. alt-profanity-check was trained on
 it, so testing there would leak in its favour. The LLMs have very likely seen Civil Comments and the
-Surge AI set during pretraining; that asymmetry favours them and is stated in the talk.
+Surge AI set during pretraining; that asymmetry favours them.
 
 `make samples` rebuilds `samples/` from the Hugging Face copy of Civil Comments (network needed);
 the raw download goes to `data/raw/`, which is not committed.
